@@ -44,12 +44,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">HubotControl</a>
+          <%= link_to 'Hubot Control', root_path, class: 'brand' %>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li><%= link_to "Status", status_index_path %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -61,10 +59,7 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li class="nav-header">Hubot [OFFLINE]</li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -75,7 +70,6 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2013</p>
       </footer>
 
     </div> <!-- /container -->
