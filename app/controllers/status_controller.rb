@@ -1,4 +1,4 @@
 class StatusController < ApplicationController
-  def index
+  def show
   end
 end

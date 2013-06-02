@@ -47,7 +47,7 @@
           <%= link_to 'Hubot Control', root_path, class: 'brand' %>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Status", status_index_path %></li>
+              <li><%= link_to "Status", status_path %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -59,7 +59,11 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Hubot [OFFLINE]</li>
+              <li class="nav-header">Hubots</li>
+              <% Hubot.find_each do |instance| %>
+                <%= render instance %>
+              <% end %>
+              <%= link_to 'Add Hubot', new_hubot_path, class: 'btn btn-success' %>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
