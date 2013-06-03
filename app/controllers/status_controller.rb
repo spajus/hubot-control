@@ -1,12 +1,12 @@
 class StatusController < ApplicationController
   def show
     # TODO run slow system calls via AJAX
-    @node   = `node -v`
-    @npm    = `npm -v`
-    @coffee = `coffee -v`
-    @hubot  = `hubot -v`
-    @hubots_dir = Rails.root.join('hubots')
-    @hubots_dir_perms = File.writable? @hubots_dir
-    @sys_user   = `whoami`
+    @node             = Status.node
+    @npm              = Status.npm
+    @coffee           = Status.coffee
+    @hubot            = Status.hubot
+    @hubots_dir       = Hubot.base_dir
+    @hubots_dir_perms = Status.hubot_dir_writable?
+    @sys_user         = Status.sys_user
   end
 end
