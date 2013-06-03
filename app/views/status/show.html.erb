@@ -28,7 +28,7 @@
   <tr>
     <td>System user</td>
     <td><%= @sys_user %></td>
-    <td><%= feedback(@sys_user != 'root', 'Not root', 'Running as root is insecure') %></td>
+    <td><%= feedback(@not_root, 'OK', "Running hubot-control as root user") %></td>
   </tr>
   <tr>
     <td>Hubots location</td>

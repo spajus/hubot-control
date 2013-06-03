@@ -68,7 +68,7 @@
               <% if Status.can_run? %>
                 <%= link_to 'Add Hubot', new_hubot_path, class: 'btn btn-success' %>
               <% else %>
-                <%= link_to 'Install missing parts', status_path, class: 'btn btn-danger' %>
+                <%= link_to 'Check Status', status_path, class: 'btn btn-danger' %>
               <% end %>
             </ul>
           </div><!--/.well -->
