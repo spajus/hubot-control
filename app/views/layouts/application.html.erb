@@ -59,11 +59,17 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Hubots</li>
-              <% Hubot.find_each do |instance| %>
-                <%= render instance %>
+              <% if Hubot.count > 0 %>
+                <li class="nav-header">Hubots</li>
+                <% Hubot.find_each do |instance| %>
+                  <%= render instance %>
+                <% end %>
               <% end %>
-              <%= link_to 'Add Hubot', new_hubot_path, class: 'btn btn-success' %>
+              <% if Status.can_run? %>
+                <%= link_to 'Add Hubot', new_hubot_path, class: 'btn btn-success' %>
+              <% else %>
+                <%= link_to 'Install missing parts', status_path, class: 'btn btn-danger' %>
+              <% end %>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
