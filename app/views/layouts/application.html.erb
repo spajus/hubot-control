@@ -66,15 +66,21 @@
                 <% end %>
               <% end %>
               <% if Status.can_run? %>
-                <%= link_to 'Add Hubot', new_hubot_path, class: 'btn btn-success' %>
+                <% unless @creating_hubot %>
+                  <%= link_to 'Add Hubot', new_hubot_path, class: 'btn btn-success' %>
+                <% end %>
               <% else %>
                 <%= link_to 'Check Status', status_path, class: 'btn btn-danger' %>
               <% end %>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
+        <% if flash.keys.any? %>
+          <div class="span9">
+            <%= bootstrap_flash %>
+          </div>
+        <% end %>
         <div class="span9">
-          <%= bootstrap_flash %>
           <%= yield %>
         </div>
       </div><!--/row-->
