@@ -17,3 +17,5 @@
 
 # Ignore Hubots location
 /hubots
+
+npm-debug.log

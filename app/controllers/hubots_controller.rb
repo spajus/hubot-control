@@ -18,9 +18,12 @@ class HubotsController < ApplicationController
     if @hubot.errors.any?
       flash[:error] = @hubot.errors.messages.collect { |k, v| "#{k} #{v.join(', ')}".capitalize }
       render :new
-    else
-      redirect_to @hubot
     end
+  end
+
+  def destroy
+    @hubot = Hubot.find(params[:id])
+    @hubot.destroy
   end
 
   def to_s
