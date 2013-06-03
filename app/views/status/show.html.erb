@@ -1,26 +1,37 @@
 <table class="table table-striped">
   <tr>
+    <td>OS</td>
+    <td><%= OS.name %></td>
+    <td><%= feedback(OS.supported?, 'Supported', 'Unsupported') %></td>
+  </tr>
+  <tr>
     <td>Node</td>
     <td><%= @node %></td>
+    <td><%= feedback(@node, 'Installed', 'Not Installed') %></td>
   </tr>
   <tr>
     <td>NPM</td>
     <td><%= @npm %></td>
+    <td><%= feedback(@npm, 'Installed', 'Not Installed') %></td>
   </tr>
   <tr>
     <td>CoffeeScript</td>
     <td><%= @coffee %></td>
+    <td><%= feedback(@coffee, 'Installed', 'Not Installed') %></td>
   </tr>
   <tr>
     <td>Hubot</td>
     <td><%= @hubot %></td>
+    <td><%= feedback(@hubot, 'Installed', 'Not Installed') %></td>
+  </tr>
+  <tr>
+    <td>System user</td>
+    <td><%= @sys_user %></td>
+    <td><%= feedback(@sys_user != 'root', 'Not root', 'Running as root is insecure') %></td>
   </tr>
   <tr>
     <td>Hubots location</td>
     <td><%= @hubots_dir %></td>
-  </tr>
-  <tr>
-    <td>Hubots location writable?</td>
-    <td><%= @hubots_dir_perms %></td>
+    <td><%= feedback(@hubots_dir_perms, 'Writable', 'Not writable') %></td>
   </tr>
 </table>
