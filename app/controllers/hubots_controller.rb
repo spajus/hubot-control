@@ -1,5 +1,7 @@
 class HubotsController < ApplicationController
 
+  include ActionController::Live
+
   def index
 
   end
@@ -26,14 +28,20 @@ class HubotsController < ApplicationController
     @hubot.destroy
   end
 
-  def to_s
-    name
+  def interact
+    @hubot = Hubot.find(params[:id])
+    @hubot.start
+  end
+
+  def interact_stream
+    @hubot = Hubot.find(params[:id])
+
   end
 
   private
 
     def hubot_params
-      params.require(:hubot).permit(:name)
+      params.require(:hubot).permit(:name, :port)
     end
 
 end

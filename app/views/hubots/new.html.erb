@@ -1,9 +1,15 @@
 <h1>Ready to build one?</h1>
 <%= form_for @hubot, html: { class: 'form' } do |f| %>
   <fieldset>
+
     <%= f.label :name, "Name" %>
     <%= f.text_field :name, placeholder: 'hubot' %>
     <span class="help-block">What name your Hubot should respond to?</span>
+
+    <%= f.label :port, "HTTP Port" %>
+    <%= f.text_field :port, placeholder: '8000' %>
+    <span class="help-block">HTTP port that this Hubot should listen to</span>
+
     <%= f.submit 'Create', class: 'btn btn-primary' %>
   </fieldset>
 <% end %>

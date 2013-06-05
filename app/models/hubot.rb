@@ -1,6 +1,7 @@
 class Hubot < ActiveRecord::Base
 
   validates :name, uniqueness: true, presence: true
+  validates :port, uniqueness: true, presence: true, numericality: true
 
   before_create :install
   before_destroy :uninstall
@@ -15,6 +16,14 @@ class Hubot < ActiveRecord::Base
 
   def log(val)
     @output = "#{output}#{val}"
+  end
+
+  def start_cmd(adapter = 'shell')
+    "cd #{self.location} && PORT=#{self.port} bin/hubot -a #{adapter}"
+  end
+
+  def to_s
+    name
   end
 
   private
