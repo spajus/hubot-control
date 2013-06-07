@@ -1,5 +1,7 @@
 class Hubot < ActiveRecord::Base
 
+  @@shells ||= {}
+
   validates :name, uniqueness: true, presence: true
   validates :port, uniqueness: true, presence: true, numericality: true
 
@@ -18,15 +20,37 @@ class Hubot < ActiveRecord::Base
     @output = "#{output}#{val}"
   end
 
-  def start_cmd(adapter = 'shell')
-    "cd #{self.location} && PORT=#{self.port} bin/hubot -a #{adapter}"
-  end
 
   def to_s
     name
   end
 
+  def shell
+    @@shells[id]
+  end
+
+  def start_shell(adapter='shell')
+    @@shells[id] ||= Shell.new(start_cmd(adapter), env, cwd)
+  end
+
+  def stop_shell
+    shell = @@shells.delete(id)
+    shell.close
+  end
+
   private
+
+    def start_cmd(adapter = 'shell')
+      "bin/hubot -a #{adapter}"
+    end
+
+    def env
+      { PORT: self.port }
+    end
+
+    def cwd
+      self.location
+    end
 
     def install
       self.location = File.join(Hubot.base_dir, name.parameterize)
