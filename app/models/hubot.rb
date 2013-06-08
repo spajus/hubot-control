@@ -1,9 +1,10 @@
 class Hubot < ActiveRecord::Base
 
-  @@shells ||= {}
+  $shells ||= {}
 
   validates :name, uniqueness: true, presence: true
   validates :port, uniqueness: true, presence: true, numericality: true
+  validates :test_port, uniqueness: true, presence: true, numericality: true
 
   before_create :install
   before_destroy :uninstall
@@ -26,26 +27,33 @@ class Hubot < ActiveRecord::Base
   end
 
   def shell
-    @@shells[id]
+    $shells[id]
+  end
+
+  def self.shell(id)
+    Rails.logger.debug("Getting shell: #{id} from #{$shells}")
+    $shells[id.to_i]
   end
 
   def start_shell(adapter='shell')
-    @@shells[id] ||= Shell.new(start_cmd(adapter), env, cwd)
+    $shells[id] ||= Shell.new(start_cmd(adapter), env(adapter), cwd)
   end
 
   def stop_shell
-    shell = @@shells.delete(id)
+    shell = $shells.delete(id)
     shell.close
   end
 
   private
 
     def start_cmd(adapter = 'shell')
-      "bin/hubot -a #{adapter}"
+      "bin/hubot -n '#{name}' -a #{adapter}"
     end
 
-    def env
-      { PORT: self.port }
+    def env(adapter='shell')
+      {
+        PORT: adapter == 'shell' ? self.test_port : self.port
+      }
     end
 
     def cwd

@@ -19,6 +19,7 @@ gem 'therubyracer', '~> 0.11'
 gem 'less-rails', '~> 2.3'
 gem 'twitter-bootstrap-rails', '~> 2.2'
 gem 'sys-proctable', '~> 0.9'
+gem 'gon', '~> 4.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

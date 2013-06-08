@@ -5,7 +5,12 @@ HubotControl::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'dashboard#index'
 
-  resources :hubots
+  resources :hubots do
+    member do
+      match 'interact', via: [:get, :post]
+      match 'interact_stream', via: [:get, :post]
+    end
+  end
   resource :status, controller: :status
 
   # Example of regular route:

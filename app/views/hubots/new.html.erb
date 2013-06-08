@@ -10,6 +10,10 @@
     <%= f.text_field :port, placeholder: '8000' %>
     <span class="help-block">HTTP port that this Hubot should listen to</span>
 
+    <%= f.label :test_port, "Test HTTP Port" %>
+    <%= f.text_field :test_port, placeholder: '8001' %>
+    <span class="help-block">HTTP port for testing interaction</span>
+
     <%= f.submit 'Create', class: 'btn btn-primary' %>
   </fieldset>
 <% end %>

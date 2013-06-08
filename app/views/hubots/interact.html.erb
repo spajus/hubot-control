@@ -1,0 +1,7 @@
+<% content_for :scripts do %>
+  <%= javascript_include_tag :hubot_interaction %>
+<% end %>
+<div class="chat">
+  <textarea id="output" readonly="readonly" class="input-block-level"></textarea>
+  <input type="text" id="input" class="input-block-level">
+</div>
