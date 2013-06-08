@@ -7,6 +7,9 @@
   height: 300px;
 }
 .chat {
+  textarea[disabled] {
+    cursor: text;
+  }
   #output {
     font-family: 'Monaco', 'Courier New', 'monospace';
     font-size: 0.8em;

@@ -1,3 +1,4 @@
+require 'socket'
 class Hubot < ActiveRecord::Base
 
   $shells ||= {}
@@ -42,6 +43,14 @@ class Hubot < ActiveRecord::Base
   def stop_shell
     shell = $shells.delete(id)
     shell.close
+  end
+
+  def url(path='/')
+    "http://#{Socket.gethostname}:#{port}#{path}"
+  end
+
+  def test_url(path='/')
+    "http://#{Socket.gethostname}:#{test_port}#{path}"
   end
 
   private

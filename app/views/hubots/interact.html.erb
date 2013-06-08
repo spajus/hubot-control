@@ -1,7 +1,14 @@
 <% content_for :scripts do %>
   <%= javascript_include_tag :hubot_interaction %>
 <% end %>
-<div class="chat">
-  <textarea id="output" readonly="readonly" class="input-block-level"></textarea>
-  <input type="text" id="input" class="input-block-level">
+<div class="row-fluid">
+  <div class="chat">
+    <textarea id="output" disabled="disabled" class="input-block-level"></textarea>
+    <input type="text" id="input" placeholder='You are talking to <%= @hubot.name %>. Try "<%= "#{@hubot.name} help" %>"' class="input-block-level">
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span12">
+    Test HTTP interface: <%= link_to @hubot.test_url('/hubot/info'), @hubot.test_url('/hubot/info') %>
+  </div>
 </div>
