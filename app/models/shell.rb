@@ -7,6 +7,16 @@ class Shell
   # Matches all ANSI color and control codes
   ANSI_PATTERN = /(\e\[(([\d;]+)m|\d{1,2}([A-Z])))/
 
+  def self.child_pids(pid)
+    Sys::ProcTable.ps.select { |pe| pe.ppid == pid }.map(&:pid)
+  end
+
+  def self.kill_tree(pid)
+    self.child_pids(pid).each { |p| Process.kill("TERM", p) }
+    Process.kill("TERM", pid)
+    Process.waitpid(pid)
+  end
+
   def self.prepare(command, env=nil, cwd=nil)
     command = "#{env.collect { |k,v| "#{k}=#{v}" }.join(' ')} #{command}" if env
     command = "cd #{cwd} && #{command}" if cwd
@@ -51,10 +61,7 @@ class Shell
   def close
     @write_pipe.close
     @master_pty.close
-    child_pids = Sys::ProcTable.ps.select { |pe| pe.ppid == @pid }.map(&:pid)
-    child_pids.each { |p| Process.kill("HUP", p) }
-    Process.kill("HUP", @pid)
-    Process.waitpid(@pid)
+    Shell.kill_tree(@pid)
   rescue => e
     Rails.logger.error("Could not close hubot shell: #{e}")
     Rails.logger.error(e)

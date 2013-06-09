@@ -1,6 +1,8 @@
 require 'socket'
 class Hubot < ActiveRecord::Base
 
+  serialize :variables, Hash
+
   $shells ||= {}
 
   validates :name, uniqueness: true, presence: true
@@ -31,7 +33,7 @@ class Hubot < ActiveRecord::Base
   end
 
   def status
-    running? ? "Running (pid: #{pid})" : 'Not running'
+    running? ? "Running (pid: #{Shell.child_pids(pid).join(',')})" : 'Not running'
   end
 
   def to_s
@@ -58,8 +60,7 @@ class Hubot < ActiveRecord::Base
   end
 
   def stop
-    Process.kill('TERM', self.pid)
-    Process.waitpid(self.pid)
+    Shell.kill_tree(self.pid)
     self.pid = nil
     self.save
   end
@@ -90,9 +91,9 @@ class Hubot < ActiveRecord::Base
     end
 
     def env(adapter='shell')
-      {
+      (variables || {}).merge({
         PORT: adapter == 'shell' ? self.test_port : self.port
-      }
+      })
     end
 
     def cwd

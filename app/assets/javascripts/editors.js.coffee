@@ -9,4 +9,4 @@ initEditors()
 
 $('[data-toggle="tab"]').on 'click', ->
   for editor in window.editors
-    editor.refresh()
+    setTimeout(editor.refresh, 100)

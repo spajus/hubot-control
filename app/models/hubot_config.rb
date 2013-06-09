@@ -12,6 +12,15 @@ class HubotConfig
     @hubot = hubot
   end
 
+  def variables
+    JSON.pretty_generate(@hubot.variables || {})
+  end
+
+  def variables=(vars)
+    @hubot.variables = JSON.parse vars
+    @hubot.save
+  end
+
   def package
     read_file 'package.json'
   end

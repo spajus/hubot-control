@@ -64,13 +64,16 @@ class HubotsController < ApplicationController
     @hubot = Hubot.find(params[:id])
     @config = @hubot.config
     if request.post?
+      variables = params[:variables]
       package = params[:package]
       hubot_scripts = params[:hubot_scripts]
       external_scripts = params[:external_scripts]
 
-      if validate_json({'package.json' => package,
+      if validate_json({'variables' => variables,
+                        'package.json' => package,
                         'hubot-scripts.json' => hubot_scripts,
                         'external-scripts.json' => external_scripts})
+        @config.variables = variables
         @config.package = package
         @config.hubot_scripts = hubot_scripts
         @config.external_scripts = external_scripts
