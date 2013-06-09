@@ -1,4 +1,25 @@
-<%= @hubot.inspect %>
+<h1><%= @hubot.name %></h1>
+<table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td><%= @hubot.name %></td>
+  </tr>
+  <tr>
+    <td>Status</td>
+    <td><%= @hubot.status %></td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td><%= @hubot.location %></td>
+  </tr>
+  <tr>
+    <td>HTTP</td>
+    <td><%= link_to @hubot.url('/hubot/info'), @hubot.url('/hubot/info') %></td>
+  </tr>
+</table>
+
+<div class="form-actions">
 <%= link_to 'Remove', @hubot, class: 'btn btn-danger',  method: :delete %>
 <%= link_to 'Test', interact_hubot_path(@hubot), class: 'btn btn-primary' %>
 <%= link_to 'Configure', configure_hubot_path(@hubot), class: 'btn btn-primary' %>
+</div>

@@ -26,6 +26,9 @@ class Hubot < ActiveRecord::Base
     @output = "#{output}#{val}"
   end
 
+  def status
+    pid.nil? ? 'Not running' : "Running (pid: #{pid})"
+  end
 
   def to_s
     name
