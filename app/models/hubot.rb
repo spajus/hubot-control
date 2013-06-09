@@ -65,6 +65,10 @@ class Hubot < ActiveRecord::Base
     self.save
   end
 
+  def log_tail(n=10)
+    `tail -n #{n} #{log_path}`
+  end
+
   def start_shell
     $shells[id] ||= Shell.new(start_cmd('shell'), env('shell'), cwd)
   end

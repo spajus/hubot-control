@@ -20,16 +20,23 @@
     <td>HTTP</td>
     <td><%= link_to @hubot.url('/hubot/info'), @hubot.url('/hubot/info') %></td>
   </tr>
+  <tr>
+    <td>Log</td>
+    <td>
+      <%= text_area_tag "log", @hubot.log_tail(5), class: 'input-block-level hubot-log' %>
+    </td>
+  </tr>
 </table>
 
 <div class="form-actions">
 
-<%= link_to 'Test', interact_hubot_path(@hubot), class: 'btn btn-primary' %>
 <% if @hubot.running? %>
   <%= link_to 'Stop', stop_hubot_path(@hubot), method: 'post', class: 'btn btn-warning' %>
 <% else %>
   <%= link_to 'Start', start_hubot_path(@hubot), method: 'post', class: 'btn btn-success' %>
 <% end %>
 <%= link_to 'Configure', configure_hubot_path(@hubot), class: 'btn btn-primary' %>
-<%= link_to 'Remove', @hubot, class: 'btn btn-danger',  method: :delete %>
+<%= link_to 'Test', interact_hubot_path(@hubot), class: 'btn btn-primary' %>
+<%= link_to 'Remove', @hubot, class: 'btn btn-danger pull-right',  method: :delete %>
 </div>
+
