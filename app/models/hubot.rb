@@ -55,7 +55,7 @@ class Hubot < ActiveRecord::Base
   end
 
   def start
-    self.pid = spawn(Shell.prepare(start_cmd(adapter, true), env(adapter), cwd))
+    self.pid = spawn(Shell.prepare(start_cmd(adapter, true), env(adapter), cwd), pgroup: true)
     self.save
   end
 
@@ -91,9 +91,7 @@ class Hubot < ActiveRecord::Base
     end
 
     def env(adapter='shell')
-      (variables || {}).merge({
-        PORT: adapter == 'shell' ? self.test_port : self.port
-      })
+      (variables || {}).merge({ PORT: adapter == 'shell' ? self.test_port : self.port })
     end
 
     def cwd

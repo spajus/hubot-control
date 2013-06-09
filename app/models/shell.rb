@@ -1,6 +1,5 @@
 require 'io/console'
 require 'pty'
-require 'sys/proctable'
 
 class Shell
 
@@ -8,13 +7,22 @@ class Shell
   ANSI_PATTERN = /(\e\[(([\d;]+)m|\d{1,2}([A-Z])))/
 
   def self.child_pids(pid)
-    Sys::ProcTable.ps.select { |pe| pe.ppid == pid }.map(&:pid)
+    Process.getpgid(pid)
+    pipe = IO.popen("ps -ef | grep #{pid}")
+    pipe.readlines.map do |line|
+      parts = line.split(/\s+/)
+      parts[2].to_i if parts[3] == pid.to_s and parts[2] != pipe.pid.to_s
+    end.compact
+  rescue => e
+    Rails.logger.error(e)
+    []
   end
 
   def self.kill_tree(pid)
     self.child_pids(pid).each { |p| Process.kill("TERM", p) }
     Process.kill("TERM", pid)
     Process.waitpid(pid)
+  rescue Errno::ESRCH
   end
 
   def self.prepare(command, env=nil, cwd=nil)

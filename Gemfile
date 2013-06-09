@@ -18,7 +18,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'therubyracer', '~> 0.11'
 gem 'less-rails', '~> 2.3'
 gem 'twitter-bootstrap-rails', '~> 2.2'
-gem 'sys-proctable', '~> 0.9'
 gem 'gon', '~> 4.1'
 gem 'codemirror-rails', '~> 3.13'
 
