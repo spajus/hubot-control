@@ -29,7 +29,7 @@ class Hubot < ActiveRecord::Base
   end
 
   def running?
-    pid.present? && !pid.blank?
+    pid.present? && Shell.child_pids(pid).any?
   end
 
   def status
