@@ -6,6 +6,10 @@
     <%= f.text_field :name, placeholder: 'hubot' %>
     <span class="help-block">What name your Hubot should respond to?</span>
 
+    <%= f.label :adapter, "Adapter" %>
+    <%= f.text_field :adapter, placeholder: 'irc' %>
+    <span class="help-block">One of <a href="https://github.com/github/hubot/wiki#hubot-adapters">available adapters</a></span>
+
     <%= f.label :port, "HTTP Port" %>
     <%= f.text_field :port, placeholder: '8000' %>
     <span class="help-block">HTTP port that this Hubot should listen to</span>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130608101253) do
+ActiveRecord::Schema.define(version: 20130609134807) do
 
   create_table "hubots", force: true do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20130608101253) do
     t.integer  "port"
     t.integer  "pid"
     t.integer  "test_port"
+    t.string   "adapter"
   end
 
 end

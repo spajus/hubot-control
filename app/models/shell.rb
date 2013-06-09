@@ -7,15 +7,19 @@ class Shell
   # Matches all ANSI color and control codes
   ANSI_PATTERN = /(\e\[(([\d;]+)m|\d{1,2}([A-Z])))/
 
+  def self.prepare(command, env=nil, cwd=nil)
+    command = "#{env.collect { |k,v| "#{k}=#{v}" }.join(' ')} #{command}" if env
+    command = "cd #{cwd} && #{command}" if cwd
+    command
+  end
+
   def initialize(command, env=nil, cwd=nil)
     STDOUT.sync
     @master_pty, slave_pty = PTY.open
     slave_pty.raw! # disable newline conversion.
     read_pipe, @write_pipe = IO.pipe
-    command = "#{env.collect { |k,v| "#{k}=#{v}" }.join(' ')} #{command}" if env
-    command = "cd #{cwd} && #{command}" if cwd
-    command =
-    @pid = spawn(command, in: read_pipe, err: :out, out: slave_pty)
+    cmd = Shell.prepare(command, env, cwd)
+    @pid = spawn(cmd, in: read_pipe, err: :out, out: slave_pty)
     read_pipe.close
     slave_pty.close
   end

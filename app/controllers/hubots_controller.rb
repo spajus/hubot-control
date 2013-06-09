@@ -26,6 +26,23 @@ class HubotsController < ApplicationController
     @hubot.destroy
   end
 
+  def start
+    return redirect_to '/' unless request.post?
+    @hubot = Hubot.find(params[:id])
+    unless @hubot.running?
+      @hubot.install_packages
+      @hubot.start
+    end
+    redirect_to @hubot
+  end
+
+  def stop
+    return redirect_to '/' unless request.post?
+    @hubot = Hubot.find(params[:id])
+    @hubot.stop if @hubot.running?
+    redirect_to @hubot
+  end
+
   def interact
     @hubot = Hubot.find(params[:id])
     @shell = @hubot.start_shell
@@ -78,7 +95,7 @@ class HubotsController < ApplicationController
     end
 
     def hubot_params
-      params.require(:hubot).permit(:name, :port, :test_port)
+      params.require(:hubot).permit(:name, :adapter, :port, :test_port)
     end
 
 end

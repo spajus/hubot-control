@@ -26,8 +26,12 @@ class Hubot < ActiveRecord::Base
     @output = "#{output}#{val}"
   end
 
+  def running?
+    pid.present? && !pid.blank?
+  end
+
   def status
-    pid.nil? ? 'Not running' : "Running (pid: #{pid})"
+    running? ? "Running (pid: #{pid})" : 'Not running'
   end
 
   def to_s
@@ -43,8 +47,25 @@ class Hubot < ActiveRecord::Base
     $shells[id.to_i]
   end
 
-  def start_shell(adapter='shell')
-    $shells[id] ||= Shell.new(start_cmd(adapter), env(adapter), cwd)
+  def install_packages
+    output = system("cd #{cwd} && npm install")
+    raise "Failed installing dependencies with 'npm install': #{$?}" unless output
+  end
+
+  def start
+    self.pid = spawn(Shell.prepare(start_cmd(adapter, true), env(adapter), cwd))
+    self.save
+  end
+
+  def stop
+    Process.kill('TERM', self.pid)
+    Process.waitpid(self.pid)
+    self.pid = nil
+    self.save
+  end
+
+  def start_shell
+    $shells[id] ||= Shell.new(start_cmd('shell'), env('shell'), cwd)
   end
 
   def stop_shell
@@ -62,8 +83,10 @@ class Hubot < ActiveRecord::Base
 
   private
 
-    def start_cmd(adapter = 'shell')
-      "bin/hubot -n '#{name}' -a #{adapter}"
+    def start_cmd(adapter = 'shell', nohup = false)
+      cmd = "bin/hubot -n '#{name}' -a #{adapter}"
+      cmd = "nohup #{cmd} > #{log_path}" if nohup
+      cmd
     end
 
     def env(adapter='shell')
@@ -74,6 +97,10 @@ class Hubot < ActiveRecord::Base
 
     def cwd
       self.location
+    end
+
+    def log_path
+      File.join(self.location, 'hubot.log')
     end
 
     def install
