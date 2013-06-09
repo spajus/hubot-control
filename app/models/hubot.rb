@@ -14,6 +14,10 @@ class Hubot < ActiveRecord::Base
     @@base_dir ||= Rails.root.join('hubots')
   end
 
+  def config
+    @config ||= HubotConfig.new(self)
+  end
+
   def output
     @output || ''
   end

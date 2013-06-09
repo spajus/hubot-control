@@ -28,6 +28,8 @@ GEM
     arel (4.0.0)
     atomic (1.1.9)
     builder (3.1.4)
+    codemirror-rails (3.13)
+      railties (>= 3.0, < 5)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -137,6 +139,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  codemirror-rails (~> 3.13)
   coffee-rails (~> 4.0.0)
   gon (~> 4.1)
   jbuilder (~> 1.0.1)

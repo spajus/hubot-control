@@ -1,0 +1,31 @@
+<h1><%= @hubot.name %> configuration </h1>
+
+<%= form_tag do %>
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#package" data-toggle="tab">package.json</a></li>
+    <li><a href="#hubot-scripts" data-toggle="tab">hubot-scripts.json</a></li>
+    <li><a href="#external-scripts" data-toggle="tab">external-scripts.json</a></li>
+  </ul>
+  <div id="editor-tabs">
+    <div class="tab-pane active" id="package">
+      <%= text_area_tag :package, params[:package] || @config.package, id: 'cfg-package', class: 'input-block-level json-editor' %>
+    </div>
+    <div class="tab-pane" id="hubot-scripts">
+      <%= text_area_tag :hubot_scripts, params[:hubot_scripts] || @config.hubot_scripts, id: 'cfg-hubot-scripts', class: 'input-block-level json-editor' %>
+    </div>
+    <div class="tab-pane" id="external-scripts">
+      <%= text_area_tag :external_scripts, params[:external_scripts] || @config.external_scripts, id: 'cfg-external-scripts', class: 'input-block-level json-editor' %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= submit_tag "Save all configuration files", class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= content_for :scripts do %>
+  <script type="text/javascript">
+    $(function() {
+      $('#editor-tabs').addClass('tab-content');
+    })
+  </script>
+<% end %>

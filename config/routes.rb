@@ -7,8 +7,9 @@ HubotControl::Application.routes.draw do
 
   resources :hubots do
     member do
-      match 'interact', via: [:get, :post]
-      match 'interact_stream', via: [:get, :post]
+      match 'interact',         via: [:get, :post]
+      match 'interact_stream',  via: [:get, :post]
+      match 'configure',        via: [:get, :post]
     end
   end
   resource :status, controller: :status

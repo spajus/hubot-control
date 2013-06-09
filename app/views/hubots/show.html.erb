@@ -1,3 +1,4 @@
 <%= @hubot.inspect %>
 <%= link_to 'Remove', @hubot, class: 'btn btn-danger',  method: :delete %>
-<%= link_to 'Interact', interact_hubot_path(@hubot), class: 'btn btn-primary' %>
+<%= link_to 'Test', interact_hubot_path(@hubot), class: 'btn btn-primary' %>
+<%= link_to 'Configure', configure_hubot_path(@hubot), class: 'btn btn-primary' %>

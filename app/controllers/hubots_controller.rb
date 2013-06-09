@@ -43,7 +43,39 @@ class HubotsController < ApplicationController
     render nothing: true
   end
 
+  def configure
+    @hubot = Hubot.find(params[:id])
+    @config = @hubot.config
+    if request.post?
+      package = params[:package]
+      hubot_scripts = params[:hubot_scripts]
+      external_scripts = params[:external_scripts]
+
+      if validate_json({'package.json' => package,
+                        'hubot-scripts.json' => hubot_scripts,
+                        'external-scripts.json' => external_scripts})
+        @config.package = package
+        @config.hubot_scripts = hubot_scripts
+        @config.external_scripts = external_scripts
+        flash[:success] = 'Updated all configuration files'
+      end
+
+    end
+  end
+
   private
+
+    def validate_json(files = {})
+      errors = []
+      files.each do |name, val|
+        errors << name unless HubotConfig.valid_json?(val)
+      end
+      if errors.any?
+        flash[:error] = "Invalid JSON in #{errors.join(',')}"
+        return false
+      end
+      true
+    end
 
     def hubot_params
       params.require(:hubot).permit(:name, :port, :test_port)
