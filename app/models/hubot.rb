@@ -16,10 +16,6 @@ class Hubot < ActiveRecord::Base
     @@base_dir ||= Rails.root.join('hubots')
   end
 
-  def self.scripts_dir
-    @@scripts_dir ||= Rails.root.join('scripts')
-  end
-
   def config
     @config ||= HubotConfig.new(self)
   end

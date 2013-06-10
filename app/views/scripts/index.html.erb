@@ -1,2 +1,5 @@
-<h1>Scripts#index</h1>
-<p>Find me in app/views/scripts/index.html.erb</p>
+<h1>Scripts</h1>
+
+<% Script.list.each do |script| %>
+  <%= link_to script, edit_scripts_path(script) %>
+<% end %>

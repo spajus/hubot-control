@@ -1,0 +1,12 @@
+<h1><%= @script.filename %></h1>
+
+<%= form_tag edit_scripts_path(@script.filename), method: 'post' do %>
+  <%= text_area_tag :content, @script.read, class: "input-block-level #{@script.type}-editor" %>
+
+<div class="form-actions">
+  <%= submit_tag 'Save', class: 'btn btn-primary' %>
+  <%= link_to 'Back', scripts_path, class: 'btn pull' %>
+  <%= link_to 'Delete', delete_scripts_path(@script.filename), confirm: 'You sure?', method: 'delete', class: 'btn btn-danger pull-right' %>
+</div>
+
+<% end %>

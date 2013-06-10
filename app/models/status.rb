@@ -29,11 +29,11 @@ class Status
 
     def scripts_dir_writable?
       begin
-        FileUtils.mkdir_p(Hubot.scripts_dir)
+        FileUtils.mkdir_p(Script.base_dir)
       rescue
-        Rails.logger.error("Failed creating #{Hubot.scripts_dir}: #{e}")
+        Rails.logger.error("Failed creating #{Script.base_dir}: #{e}")
       end
-      @@scripts_dir_writable ||= File.writable? Hubot.scripts_dir
+      @@scripts_dir_writable ||= File.writable? Script.base_dir
     end
 
     def sys_user

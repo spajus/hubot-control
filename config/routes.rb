@@ -15,6 +15,10 @@ HubotControl::Application.routes.draw do
 
   resource :status, controller: :status
 
-  resources :scripts
+  resource :scripts do
+    get :index
+    match 'edit/:script', action: :edit, as: :edit, via: [:get, :post]
+    delete 'delete/:script', action: :delete, as: :delete
+  end
 
 end

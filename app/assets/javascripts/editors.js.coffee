@@ -1,10 +1,18 @@
 window.editors = []
-initEditors = ->
-  $('.json-editor').each (idx, elem) ->
+
+initEditor = (clazz, type, lineNumbers=false) ->
+  $(clazz).each (idx, elem) ->
     window.editors.push CodeMirror.fromTextArea elem,
-      mode: { name: 'javascript', json: true }
+      mode: type
       theme: 'night'
       viewportMargin: Infinity
+      lineNumbers: lineNumbers
+      tabSize: 2
+
+initEditors = ->
+  initEditor '.json-editor', { name: 'javascript', json: true }
+  initEditor '.javascript-editor', 'javascript', true
+  initEditor '.coffeescript-editor', 'coffeescript', true
 initEditors()
 
 $('[data-toggle="tab"]').on 'click', ->
