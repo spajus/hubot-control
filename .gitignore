@@ -17,5 +17,6 @@
 
 # Ignore Hubots location
 /hubots
+/scripts
 
 npm-debug.log
