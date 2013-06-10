@@ -7,7 +7,7 @@ HubotControl::Application.routes.draw do
 
   resources :hubots do
     member do
-      match 'interact',         via: [:get, :post]
+      match 'interact',         via: [:get, :post, :delete]
       match 'interact_stream',  via: [:get, :post]
       match 'configure',        via: [:get, :post]
       match 'log',              via: [:get, :post]

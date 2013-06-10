@@ -45,8 +45,13 @@ class HubotsController < ApplicationController
 
   def interact
     @hubot = Hubot.find(params[:id])
-    @shell = @hubot.start_shell
-    gon.hubot_stream_url = url_for(action: :interact_stream)
+    if request.get?
+      @shell = @hubot.start_shell
+      gon.hubot_stream_url = url_for(action: :interact_stream)
+    elsif request.delete?
+      @hubot.stop_shell
+      redirect_to @hubot
+    end
   end
 
   def interact_stream

@@ -23,6 +23,7 @@ class Shell
     Process.kill("TERM", pid)
     Process.waitpid(pid)
   rescue Errno::ESRCH
+    Rails.logger.error("Couldn't find process with pid: #{pid}")
   end
 
   def self.prepare(command, env=nil, cwd=nil)
