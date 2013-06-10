@@ -11,10 +11,12 @@
   font-size: 0.8em;
   height: 140px;
 }
+.hubot-log-full {
+  font-family: monospace;
+  font-size: 0.8em;
+  min-height: 400px;
+}
 .chat {
-  textarea[disabled] {
-    cursor: text;
-  }
   #output {
     font-family: 'Monaco', 'Courier New', 'monospace';
     font-size: 0.8em;
@@ -25,5 +27,12 @@
 #editor-tabs {
   .json-editor {
     display: none;
+  }
+}
+
+textarea {
+  resize: vertical;
+  &[disabled] {
+    cursor: text;
   }
 }

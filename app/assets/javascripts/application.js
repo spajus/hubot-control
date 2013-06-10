@@ -19,3 +19,4 @@
 //= require codemirror/modes/javascript
 //= require codemirror/modes/coffeescript
 //= require editors
+//= require common

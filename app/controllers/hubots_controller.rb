@@ -60,6 +60,13 @@ class HubotsController < ApplicationController
     render nothing: true
   end
 
+  def log
+    @hubot = Hubot.find(params[:id])
+    @log = @hubot.log_tail(500)
+    return render text: @log if request.post?
+    gon.log_stream_url = url_for(action: :log)
+  end
+
   def configure
     @hubot = Hubot.find(params[:id])
     @config = @hubot.config

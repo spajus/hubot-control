@@ -1,0 +1,9 @@
+<h1><%= @hubot.name %> log</h1>
+
+<%= text_area_tag :log, @log, id: 'log', disabled: 'disabled', class: 'input-block-level hubot-log-full' %>
+
+<%= link_to "Back", @hubot, class: 'btn pull-right' %>
+
+<%= content_for :scripts do %>
+  <%= javascript_include_tag :hubot_log %>
+<% end %>

@@ -66,7 +66,7 @@ class Hubot < ActiveRecord::Base
   end
 
   def log_tail(n=10)
-    `tail -n #{n} #{log_path}`
+    `tail -n #{n} #{log_path}`.strip
   end
 
   def start_shell

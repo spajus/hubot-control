@@ -23,7 +23,8 @@
   <tr>
     <td>Log</td>
     <td>
-      <%= text_area_tag "log", @hubot.log_tail(5), class: 'input-block-level hubot-log' %>
+      <%= text_area_tag "log", @hubot.log_tail(5), disabled: 'disabled', class: 'input-block-level hubot-log' %>
+      <%= link_to "more", log_hubot_path(@hubot), class: 'pull-right' %>
     </td>
   </tr>
 </table>
