@@ -5,7 +5,7 @@ Control self-hosted Hubot like a boss!
 
 ## Features
 
-### Check server for compatibility for running Hubot
+### Check server compatibility
 ![Hubot Check Prerequisites](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-5.png)
 
 ### Create Hubot instances from web interface
