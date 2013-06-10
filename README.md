@@ -38,7 +38,7 @@ This project is in early beta stage, install and use at your own risk.
 ![Hubot Configuration](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-2.png)
 
 ### Tail logs to troubleshoot problems
-![Hubot Log](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-5.png)
+![Hubot Log](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-4.png)
 
 ## TODO
 
