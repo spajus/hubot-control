@@ -1,7 +1,9 @@
 <h1>Ready to build one?</h1>
-<%= form_for @hubot, html: { class: 'form' } do |f| %>
-  <fieldset>
-    <%= render 'hubot_fields', f: f %>
-    <%= f.submit 'Create', class: 'btn btn-primary' %>
-  </fieldset>
-<% end %>
+<div class="row-fluid">
+  <%= form_for @hubot, html: { class: 'form well' } do |f| %>
+    <fieldset>
+      <%= render 'hubot_fields', f: f %>
+      <%= f.submit 'Create', class: 'btn btn-primary' %>
+    </fieldset>
+  <% end %>
+</div>

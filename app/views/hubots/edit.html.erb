@@ -1,7 +1,9 @@
 <h1>Reassembling: <%= @hubot.name %></h1>
-<%= form_for @hubot, html: { class: 'form' } do |f| %>
-  <fieldset>
-    <%= render 'hubot_fields', f: f %>
-    <%= f.submit 'Update', class: 'btn btn-primary' %>
-  </fieldset>
-<% end %>
+<div class="row-fluid">
+  <%= form_for @hubot, html: { class: 'form well' } do |f| %>
+    <fieldset>
+      <%= render 'hubot_fields', f: f %>
+      <%= f.submit 'Update', class: 'btn btn-primary' %>
+    </fieldset>
+  <% end %>
+</div>

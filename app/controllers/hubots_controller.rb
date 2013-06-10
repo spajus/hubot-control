@@ -3,7 +3,6 @@ class HubotsController < ApplicationController
   before_filter :find_hubot, except: [:index, :interact_stream, :new, :create]
 
   def index
-
   end
 
   def show
