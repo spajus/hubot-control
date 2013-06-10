@@ -1,5 +1,3 @@
-<%= @hubot %>
-<label>Output</label>
-<textarea class="input-block-level raw-log">
-<%= @hubot.output %>
-</textarea>
+<h1>You just assembled <%= @hubot.name %>!</h1>
+<%= text_area_tag :log, @hubot.output, disabled: 'disabled', class: 'input-block-level raw-log' %>
+<%= link_to "Control #{@hubot.name}", @hubot, class: 'btn btn-success pull-right' %>

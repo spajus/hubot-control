@@ -38,10 +38,12 @@ class HubotsController < ApplicationController
   def destroy
     @hubot = Hubot.find(params[:id])
     @hubot.destroy
+    flash[:notice] = "Destroyed #{@hubot.name} :("
+    redirect_to root_path
   end
 
   def start
-    return redirect_to '/' unless request.post?
+    return redirect_to root_path unless request.post?
     @hubot = Hubot.find(params[:id])
     unless @hubot.running?
       @hubot.install_packages
