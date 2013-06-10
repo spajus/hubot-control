@@ -13,6 +13,7 @@
       <%= text_area_tag :variables, params[:variables] || @config.variables, id: 'cfg-variables', class: 'input-block-level json-editor' %>
     </div>
     <div class="tab-pane" id="package">
+      <span class="help-inline">Include adapter and other external dependencies in <code>dependencies</code> block</span>
       <%= text_area_tag :package, params[:package] || @config.package, id: 'cfg-package', class: 'input-block-level json-editor' %>
     </div>
     <div class="tab-pane" id="hubot-scripts">
