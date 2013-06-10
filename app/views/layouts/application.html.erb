@@ -47,7 +47,7 @@
           <%= link_to 'Hubot Control', root_path, class: 'brand' %>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Status", status_path %></li>
+              <li class="<%= 'active' if params[:controller] == 'status' %>"><%= link_to "Status", status_path %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
