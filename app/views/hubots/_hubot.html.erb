@@ -1,10 +1,10 @@
-<li>
-  <nobr>
-  <% if hubot.running? %>
-    <i class="icon-ok-sign"></i>
-  <% else %>
-    <i class="icon-remove-sign"></i>
+<li <% if hubot.id == current_hubot_id %>class="active"<% end %>>
+  <%= link_to hubot do %>
+    <% if hubot.running? %>
+      <i class="icon-ok-sign"></i>
+    <% else %>
+      <i class="icon-remove-sign"></i>
+    <% end %>
+    <%= hubot.name %>
   <% end %>
-  <%= link_to hubot.name, hubot %>
-  </nobr>
 </li>

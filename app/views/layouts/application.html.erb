@@ -62,7 +62,7 @@
               <% if Hubot.count > 0 %>
                 <li class="nav-header">Hubots</li>
                 <% Hubot.find_each do |instance| %>
-                  <%= render instance %>
+                  <%= render instance, current_hubot_id: @hubot.try(:id) %>
                 <% end %>
               <% end %>
               <li class="divider"></li>
