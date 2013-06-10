@@ -1,11 +1,26 @@
 class HubotsController < ApplicationController
 
+  before_filter :find_hubot, except: [:index, :interact_stream, :new, :create]
+
   def index
 
   end
 
   def show
-    @hubot = Hubot.find params[:id]
+  end
+
+  def edit
+  end
+
+  def update
+    @hubot.update_attributes(hubot_params)
+    @hubot.save
+    if @hubot.errors.any?
+      flash[:error] = @hubot.errors.messages.collect { |k, v| "#{k} #{v.join(', ')}".capitalize }
+    else
+      flash[:success] = "#{@hubot.name} updated!"
+    end
+    render :edit
   end
 
   def new
@@ -66,14 +81,12 @@ class HubotsController < ApplicationController
   end
 
   def log
-    @hubot = Hubot.find(params[:id])
     @log = @hubot.log_tail(500)
     return render text: @log if request.post?
     gon.log_stream_url = url_for(action: :log)
   end
 
   def configure
-    @hubot = Hubot.find(params[:id])
     @config = @hubot.config
     if request.post?
       variables = params[:variables]
@@ -107,6 +120,10 @@ class HubotsController < ApplicationController
         return false
       end
       true
+    end
+
+    def find_hubot
+      @hubot = Hubot.find params[:id] if params[:id]
     end
 
     def hubot_params
