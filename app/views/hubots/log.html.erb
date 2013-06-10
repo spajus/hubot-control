@@ -2,6 +2,7 @@
 
 <%= text_area_tag :log, @log, id: 'log', disabled: 'disabled', class: 'input-block-level hubot-log-full' %>
 
+<span class="pull-left"><%= @hubot.log_path %></span>
 <%= link_to "Back", @hubot, class: 'btn pull-right' %>
 
 <%= content_for :scripts do %>

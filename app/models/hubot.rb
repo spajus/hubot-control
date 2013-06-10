@@ -86,6 +86,10 @@ class Hubot < ActiveRecord::Base
     "http://#{Socket.gethostname}:#{test_port}#{path}"
   end
 
+  def log_path
+    File.join(self.location, 'hubot.log')
+  end
+
   private
 
     def start_cmd(adapter = 'shell', nohup = false)
@@ -100,10 +104,6 @@ class Hubot < ActiveRecord::Base
 
     def cwd
       self.location
-    end
-
-    def log_path
-      File.join(self.location, 'hubot.log')
     end
 
     def install

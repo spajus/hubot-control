@@ -65,6 +65,7 @@
                   <%= render instance %>
                 <% end %>
               <% end %>
+              <li class="divider"></li>
               <% if Status.can_run? %>
                 <% unless @creating_hubot %>
                   <%= link_to 'Add Hubot', new_hubot_path, class: 'btn btn-success' %>
