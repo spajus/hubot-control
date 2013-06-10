@@ -1,9 +1,9 @@
 <h1>Ready to build one?</h1>
 <div class="row-fluid">
-  <%= form_for @hubot, html: { class: 'form well' } do |f| %>
-    <fieldset>
-      <%= render 'hubot_fields', f: f %>
+  <%= form_for @hubot, html: { class: 'form form-inline' } do |f| %>
+    <%= render 'hubot_fields', f: f %>
+    <div class="form-actions">
       <%= f.submit 'Create', class: 'btn btn-primary' %>
-    </fieldset>
+    </div>
   <% end %>
 </div>
