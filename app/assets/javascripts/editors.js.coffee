@@ -13,7 +13,7 @@ initEditor = (clazz, type, options = {lineNumbers: false, validator: null}) ->
 initEditors = ->
   initEditor '.json-editor', { name: 'javascript', json: true }, validator: CodeMirror.jsonValidator
   initEditor '.javascript-editor', 'javascript', lineNumbers: true, validator: CodeMirror.javascriptValidator
-  initEditor '.coffeescript-editor', 'coffeescript', lineNumbers: true
+  initEditor '.coffeescript-editor', 'coffeescript', lineNumbers: true, validator: CodeMirror.coffeeValidator
 initEditors()
 
 $('[data-toggle="tab"]').on 'click', ->

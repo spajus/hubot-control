@@ -29,5 +29,6 @@
 //= require codemirror/addon/lint/lint
 //= require codemirror/addon/lint/javascript-lint
 //= require codemirror/addon/lint/json-lint
+//= require codemirror/addon/lint/coffee-lint
 //= require editors
 //= require common

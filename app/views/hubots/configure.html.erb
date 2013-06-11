@@ -21,6 +21,7 @@
       <%= text_area_tag :hubot_scripts, params[:hubot_scripts] || @config.hubot_scripts, id: 'cfg-hubot-scripts', class: 'input-block-level json-editor' %>
     </div>
     <div class="tab-pane" id="external-scripts">
+      <span class="help-inline">Include external scripts or from <code><%= Script.base_dir %></code>. Available: <%= Script.list.join(',') %> </span>
       <%= text_area_tag :external_scripts, params[:external_scripts] || @config.external_scripts, id: 'cfg-external-scripts', class: 'input-block-level json-editor' %>
     </div>
   </div>
