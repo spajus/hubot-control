@@ -34,6 +34,9 @@ This project is in early beta stage, install and use at your own risk.
 ### Control your Hubot
 ![Hubot Control Panel](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-1.png)
 
+### Develop Hubot scripts
+![Hubot Control Panel](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-7.png)
+
 ### Edit Variables and configuration files
 ![Hubot Configuration](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-2.png)
 
@@ -44,7 +47,6 @@ This project is in early beta stage, install and use at your own risk.
 
   - Auto-install adapter dependencies
   - Configuration templates
-  - Script development toolkit
 
 ## Contributing
 
