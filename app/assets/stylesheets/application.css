@@ -11,5 +11,7 @@
  *= require_self
  *= require codemirror
  *= require codemirror/themes/night
+ *= require codemirror/addon/dialog/dialog
+ *= require codemirror/addon/lint/lint
  *= require_tree .
  */
