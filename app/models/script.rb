@@ -9,12 +9,16 @@ class Script
   end
 
   def initialize(name)
-    @filename = name
-    @file = File.join(Script.base_dir, name)
+    self.filename = name
   end
 
   def filename
     @filename
+  end
+
+  def filename=(filename)
+    @filename = filename
+    @file = File.join(Script.base_dir, filename)
   end
 
   def type
@@ -26,7 +30,7 @@ class Script
   end
 
   def read
-    File.read(@file)
+    File.exist?(@file) ? File.read(@file) : ''
   end
 
   def write(content)
@@ -37,6 +41,8 @@ class Script
 
   def delete
     File.delete(@file)
+  rescue Errno::ENOENT => e
+    Rails.logger.warn("Could not delete #{@file}: #{e}")
   end
 
 end
