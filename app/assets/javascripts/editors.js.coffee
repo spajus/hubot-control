@@ -4,7 +4,8 @@ initEditor = (clazz, type, options = {lineNumbers: false, validator: null}) ->
   $(clazz).each (idx, elem) ->
     window.editors.push CodeMirror.fromTextArea elem,
       mode: type
-      theme: 'night'
+      theme: 'solarized dark'
+      gutters: ["CodeMirror-lint-markers"]
       viewportMargin: Infinity
       lineNumbers: options.lineNumbers
       lintWith: options.validator
