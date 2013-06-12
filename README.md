@@ -5,8 +5,8 @@ Control self-hosted Hubot like a boss!
 
 ## Installation
 
-- Run it like a regular Rails 4 app, i.e. with `rails s`, or deploy with Unicorn, Thin or Passenger
-- Owner of rails app process must have write permissions to `#{Rails.root}/hubots`
+- Run it like a regular Rails 4 app, i.e. with `rails s` or deploy with Unicorn, Thin or Passenger
+- Owner of rails app process must have write permissions to `#{Rails.root}/hubots` and `#{Rails.root}/scripts`, or just `#{Rails.root}`
 - It has no authorization mechanism yet, so make sure the URL is not accessible for public
 
 ## Usage
@@ -15,6 +15,7 @@ Control self-hosted Hubot like a boss!
 2. Add hubot instance
 3. Configure the variables, add scripts
 4. Click on Hubot name in the sidebar to control it
+5. Develop scripts with built-in editor
 
 ## Disclaimer
 
