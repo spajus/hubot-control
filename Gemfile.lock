@@ -58,6 +58,9 @@ GEM
     less-rails (2.3.3)
       actionpack (>= 3.1)
       less (~> 2.3.1)
+    less-rails-fontawesome (0.4.4)
+      less-rails (>= 2.1.7)
+      railties (>= 3.1.1)
     libv8 (3.11.8.17)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -144,6 +147,7 @@ DEPENDENCIES
   jbuilder (~> 1.0.1)
   jquery-rails
   less-rails (~> 2.3)
+  less-rails-fontawesome (~> 0.4)
   pry-nav
   rails (= 4.0.0.rc2)
   sass-rails (~> 4.0.0.rc1)

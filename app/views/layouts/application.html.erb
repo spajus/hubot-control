@@ -44,11 +44,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <%= link_to 'Hubot Control', root_path, class: 'brand' %>
+          <%= link_to root_path, class: 'brand' do %>
+            <i class="icon-chevron-sign-right"></i> Hubot Control
+          <% end %>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <li class="<%= 'active' if params[:controller] == 'status' %>"><%= link_to "Status", status_path %></li>
               <li class="<%= 'active' if params[:controller] == 'scripts' %>"><%= link_to "Scripts", scripts_path %></li>
+              <li><a href="https://github.com/spajus/hubot-control"><i class="icon-github-sign icon-large"></i></a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

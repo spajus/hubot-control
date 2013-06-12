@@ -20,6 +20,8 @@ gem 'less-rails', '~> 2.3'
 gem 'twitter-bootstrap-rails', '~> 2.2'
 gem 'gon', '~> 4.1'
 gem 'codemirror-rails', '~> 3.13'
+gem 'less-rails-fontawesome', '~> 0.4'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
