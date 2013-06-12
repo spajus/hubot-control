@@ -1,20 +1,20 @@
 window.editors = []
 
-initEditor = (clazz, type, options = {lineNumbers: false, validator: null}) ->
+initEditor = (clazz, type, options = {validator: null}) ->
   $(clazz).each (idx, elem) ->
     window.editors.push CodeMirror.fromTextArea elem,
       mode: type
       theme: 'solarized dark'
       gutters: ["CodeMirror-lint-markers"]
       viewportMargin: Infinity
-      lineNumbers: options.lineNumbers
+      lineNumbers: true
       lintWith: options.validator
       tabSize: 2
 
 initEditors = ->
   initEditor '.json-editor', { name: 'javascript', json: true }, validator: CodeMirror.jsonValidator
-  initEditor '.javascript-editor', 'javascript', lineNumbers: true, validator: CodeMirror.javascriptValidator
-  initEditor '.coffeescript-editor', 'coffeescript', lineNumbers: true, validator: CodeMirror.coffeeValidator
+  initEditor '.javascript-editor', 'javascript', validator: CodeMirror.javascriptValidator
+  initEditor '.coffeescript-editor', 'coffeescript', validator: CodeMirror.coffeeValidator
 initEditors()
 
 $('[data-toggle="tab"]').on 'click', ->
