@@ -51,7 +51,20 @@
             <ul class="nav">
               <li class="<%= 'active' if params[:controller] == 'status' %>"><%= link_to "Status", status_path %></li>
               <li class="<%= 'active' if params[:controller] == 'scripts' %>"><%= link_to "Scripts", scripts_path %></li>
-              <li><a href="https://github.com/spajus/hubot-control"><i class="icon-github-sign icon-large"></i></a></li>
+              <ul class="nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Resources
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="https://github.com/github/hubot">Hubot</a></li>
+                    <li><a href="https://github.com/github/hubot-scripts">Hubot Scripts</a></li>
+                    <li><a href="http://nodejs.org/api/">Node.js API</a></li>
+                    <li><a href="https://github.com/spajus/hubot-control">Hubot Control</a></li>
+                  </ul>
+                </li>
+              </ul>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
