@@ -63,20 +63,34 @@
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
-            <ul class="nav nav-list">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="nav-header">Hubots</li>
               <% if Hubot.count > 0 %>
-                <li class="nav-header">Hubots</li>
                 <% Hubot.find_each do |instance| %>
                   <%= render instance, current_hubot_id: @hubot.try(:id) %>
                 <% end %>
               <% end %>
-              <li class="divider"></li>
+              <hr />
               <% if Status.can_run? %>
                 <% unless @creating_hubot %>
                   <%= link_to 'Add Hubot', new_hubot_path, class: 'btn btn-success' %>
                 <% end %>
               <% else %>
                 <%= link_to 'Check Status', status_path, class: 'btn btn-danger' %>
+              <% end %>
+            </ul>
+          </div><!--/.well -->
+          <div class="well sidebar-nav">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="nav-header">Scripts</li>
+              <% if Script.list.any? %>
+                <% Script.list.each do |script| %>
+                  <li class="<%= 'active' if params[:controller] == 'scripts' && params[:script] == script %>"><%= link_to script, edit_scripts_path(script: script) %></li>
+                <% end %>
+              <% end %>
+              <hr />
+              <% unless @creating_hubot %>
+                <%= link_to 'New Script', scripts_path, class: 'btn btn-success' %>
               <% end %>
             </ul>
           </div><!--/.well -->
