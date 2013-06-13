@@ -1,39 +1,40 @@
 <h1><%= @hubot.name %> configuration </h1>
 
-<%= form_tag do %>
-  <ul class="nav nav-pills">
-    <li class="active"><a href="#variables" data-toggle="tab">Variables</a></li>
-    <li><a href="#package" data-toggle="tab">package.json</a></li>
-    <li><a href="#hubot-scripts" data-toggle="tab">hubot-scripts.json</a></li>
-    <li><a href="#external-scripts" data-toggle="tab">external-scripts.json</a></li>
-  </ul>
-  <div id="editor-tabs">
-    <div class="tab-pane active" id="variables">
-      <span class="help-inline">Define ENV variables in JSON, i.e. <code>{ "HUBOT_IRC_NICK":"hubot", "FOO":"bar" }</code></span>
-      <%= text_area_tag :variables, params[:variables] || @config.variables, id: 'cfg-variables', class: 'input-block-level json-editor' %>
-    </div>
-    <div class="tab-pane" id="package">
-      <span class="help-inline">Include adapter and other external dependencies in <code>dependencies</code> block</span>
-      <%= text_area_tag :package, params[:package] || @config.package, id: 'cfg-package', class: 'input-block-level json-editor' %>
-    </div>
-    <div class="tab-pane" id="hubot-scripts">
-      <span class="help-inline">Include scripts by name from <%= link_to 'this catalog', 'https://github.com/github/hubot-scripts/tree/master/src/scripts' %></span>
-      <%= text_area_tag :hubot_scripts, params[:hubot_scripts] || @config.hubot_scripts, id: 'cfg-hubot-scripts', class: 'input-block-level json-editor' %>
-    </div>
-    <div class="tab-pane" id="external-scripts">
-      <span class="help-inline">Include external scripts or from <code><%= Script.base_dir %></code>. Available: <%= Script.list.join(',') %> </span>
-      <%= text_area_tag :external_scripts, params[:external_scripts] || @config.external_scripts, id: 'cfg-external-scripts', class: 'input-block-level json-editor' %>
-    </div>
+<div class="row-fluid">
+  <div class="span12">
+    <%= form_tag do %>
+      <ul class="nav nav-pills">
+        <li class="active"><a href="#variables" data-toggle="tab">Variables</a></li>
+        <li><a href="#package" data-toggle="tab">package.json</a></li>
+        <li><a href="#hubot-scripts" data-toggle="tab">hubot-scripts.json</a></li>
+        <li><a href="#external-scripts" data-toggle="tab">external-scripts.json</a></li>
+      </ul>
+      <div id="editor-tabs">
+        <div class="tab-pane active" id="variables">
+          <span class="help-inline">Define ENV variables in JSON, i.e. <code>{ "HUBOT_IRC_NICK":"hubot", "FOO":"bar" }</code></span>
+          <%= text_area_tag :variables, params[:variables] || @config.variables, id: 'cfg-variables', class: 'input-block-level json-editor' %>
+        </div>
+        <div class="tab-pane" id="package">
+          <span class="help-inline">Include adapter and other external dependencies in <code>dependencies</code> block</span>
+          <%= text_area_tag :package, params[:package] || @config.package, id: 'cfg-package', class: 'input-block-level json-editor' %>
+        </div>
+        <div class="tab-pane" id="hubot-scripts">
+          <span class="help-inline">Include scripts by name from <%= link_to 'this catalog', 'https://github.com/github/hubot-scripts/tree/master/src/scripts' %></span>
+          <%= text_area_tag :hubot_scripts, params[:hubot_scripts] || @config.hubot_scripts, id: 'cfg-hubot-scripts', class: 'input-block-level json-editor' %>
+        </div>
+        <div class="tab-pane" id="external-scripts">
+          <span class="help-inline">Include external scripts (full path)</span>
+          <%= text_area_tag :external_scripts, params[:external_scripts] || @config.external_scripts, id: 'cfg-external-scripts', class: 'input-block-level json-editor' %>
+          <%= render partial: 'include_script', locals: { base_dir: Script.base_dir, scripts: Script.list, target: 'cfg-external-scripts' } %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <%= submit_tag "Save all changes", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-  <div class="form-actions">
-    <%= submit_tag "Save all changes", class: 'btn btn-primary' %>
-  </div>
-<% end %>
+</div>
 
 <%= content_for :scripts do %>
-  <script type="text/javascript">
-    $(function() {
-      $('#editor-tabs').addClass('tab-content');
-    })
-  </script>
+  <%= javascript_include_tag :configure %>
 <% end %>

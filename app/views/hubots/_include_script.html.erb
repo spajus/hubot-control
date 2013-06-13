@@ -1,0 +1,10 @@
+<div class="row-fluid">
+  <div class="span12 well">
+    <% scripts.each do |script| %>
+      <%= link_to  '#', class: 'btn btn-small include-script',
+                  data: { target: target, script: File.join(base_dir, script) } do %>
+        <i class="icon-plus"></i> <%= script %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
