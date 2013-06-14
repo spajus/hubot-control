@@ -73,7 +73,12 @@ END
   end
 
   def self.list
-    Dir.entries(Script.base_dir).reject { |f| f.match(/^\./) }
+    Dir.entries(Script.base_dir).reject { |d| d.match(/^\./) }
+  end
+
+  def self.list_scripts(hubot)
+    scripts_dir = File.join(hubot.location, 'node_modules', 'hubot-scripts', 'src', 'scripts')
+    Dir.entries(scripts_dir).reject { |d| d.match(/^\./) }
   end
 
   def initialize(name)

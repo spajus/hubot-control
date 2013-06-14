@@ -2,7 +2,8 @@
   <div class="span12 well">
     <% scripts.each do |script| %>
       <%= link_to  '#', class: 'btn btn-small include-script',
-                  data: { target: target, script: File.join(base_dir, script) } do %>
+                  data: { target: target,
+                          script: defined?(base_dir) ? File.join(base_dir, script) : script } do %>
         <i class="icon-plus"></i> <%= script %>
       <% end %>
     <% end %>
