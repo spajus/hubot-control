@@ -5,7 +5,8 @@ class Hubot < ActiveRecord::Base
 
   $shells ||= {}
 
-  validates :name, uniqueness: true, presence: true
+  validates :title, uniqueness: true, presence: true
+  validates :name, presence: true
   validates :port, uniqueness: true, presence: true, numericality: true
   validates :test_port, uniqueness: true, presence: true, numericality: true
 
@@ -107,7 +108,7 @@ class Hubot < ActiveRecord::Base
     end
 
     def install
-      self.location = File.join(Hubot.base_dir, name.parameterize)
+      self.location = File.join(Hubot.base_dir, title.parameterize)
       log `hubot --create #{self.location}`
       log `cd #{self.location} && bin/hubot -v`
     end

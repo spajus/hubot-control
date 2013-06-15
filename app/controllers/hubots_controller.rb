@@ -17,7 +17,7 @@ class HubotsController < ApplicationController
     if @hubot.errors.any?
       flash[:error] = @hubot.errors.messages.collect { |k, v| "#{k} #{v.join(', ')}".capitalize }
     else
-      flash[:success] = "#{@hubot.name} updated!"
+      flash[:success] = "#{@hubot.title} updated!"
     end
     render :edit
   end
@@ -38,7 +38,7 @@ class HubotsController < ApplicationController
   def destroy
     @hubot = Hubot.find(params[:id])
     @hubot.destroy
-    flash[:notice] = "Destroyed #{@hubot.name} :("
+    flash[:notice] = "Destroyed #{@hubot.title} :("
     redirect_to root_path
   end
 
@@ -128,7 +128,7 @@ class HubotsController < ApplicationController
     end
 
     def hubot_params
-      params.require(:hubot).permit(:name, :adapter, :port, :test_port)
+      params.require(:hubot).permit(:title, :name, :adapter, :port, :test_port)
     end
 
 end

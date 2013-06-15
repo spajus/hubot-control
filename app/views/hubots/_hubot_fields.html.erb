@@ -1,6 +1,17 @@
 <table class="table table-striped table-bordered table-hover">
   <tr>
     <td>
+      <%= f.label :title, "Title" %>
+    </td>
+    <td>
+      <%= f.text_field :title, placeholder: 'hubot' %>
+    </td>
+    <td>
+      Unique title for this Hubot
+    </td>
+  </tr>
+  <tr>
+    <td>
       <%= f.label :name, "Name" %>
     </td>
     <td>

@@ -1,4 +1,4 @@
-<h1><%= @hubot.name %> configuration </h1>
+<h1><%= @hubot.title %> configuration </h1>
 
 <div class="row-fluid">
   <div class="span12">
@@ -62,6 +62,7 @@
       </div>
       <div class="form-actions">
         <%= submit_tag "Save all changes", class: 'btn btn-primary' %>
+        <%= link_to "Back", hubot_path(@hubot), class: 'btn pull-right' %>
       </div>
     <% end %>
   </div>
