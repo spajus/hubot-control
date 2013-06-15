@@ -1,13 +1,17 @@
 <h1>Scripts</h1>
 
-<%= form_tag scripts_path, class: 'form form-inline' do %>
-  <%= text_field_tag :filename, nil, placeholder: 'example.coffee' %>
-  <%= submit_tag "Create", class: 'btn btn-success' %>
-<% end %>
+<p>Custom hubot scripts in JavaScript or CoffeeScript. Add them to your hubots via
+external-scripts.json, which can be found in configuration tabs.</p>
 
+<div class="well">
+  <%= form_tag scripts_path, class: 'form form-inline' do %>
+    <%= text_field_tag :filename, nil, placeholder: 'example.coffee' %>
+    <%= submit_tag "Create", class: 'btn btn-success' %>
+  <% end %>
   <ul class="nav nav-pills">
     <% Script.list.each do |script| %>
       <li><%= link_to script, edit_scripts_path(script: script) %></li>
     <% end %>
   </ul>
+</div>
 
