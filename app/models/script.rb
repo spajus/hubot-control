@@ -73,6 +73,7 @@ END
   end
 
   def self.list
+    return [] unless Dir.exist? Script.base_dir
     Dir.entries(Script.base_dir).reject { |d| d.match(/^\./) }
   end
 

@@ -7,22 +7,22 @@
   </tr>
   <tr>
     <td>Node</td>
-    <td><%= @node %></td>
+    <td><%= @node || link_to 'Node install instructions', 'https://github.com/joyent/node/wiki/Installation' %></td>
     <td><%= feedback(@node, 'Installed', 'Not Installed') %></td>
   </tr>
   <tr>
     <td>NPM</td>
-    <td><%= @npm %></td>
+    <td><%= @npm || link_to 'NPM download', 'http://nodejs.org/download/' %></td>
     <td><%= feedback(@npm, 'Installed', 'Not Installed') %></td>
   </tr>
   <tr>
     <td>CoffeeScript</td>
-    <td><%= @coffee %></td>
+    <td><%= @coffee || 'Run <code>npm install -g coffee-script</code> after Node and NPM are installed' %></td>
     <td><%= feedback(@coffee, 'Installed', 'Not Installed') %></td>
   </tr>
   <tr>
     <td>Hubot</td>
-    <td><%= @hubot %></td>
+    <td><%= @hubot || 'Run <code>npm install -g hubot</code> after Node, NPM and CoffeeScript are installed' %></td>
     <td><%= feedback(@hubot, 'Installed', 'Not Installed') %></td>
   </tr>
   <tr>
