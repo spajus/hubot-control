@@ -1,13 +1,17 @@
 <h1><%= @script.filename %></h1>
 
 <%= form_tag edit_scripts_path(script: @script.filename), method: 'post' do %>
-  <%= text_field_tag :filename, @script.filename, class: 'input-block-level' %>
+
+  <div class="input-prepend">
+    <span class="add-on"><%= Script.base_dir %>/</span>
+    <%= text_field_tag :filename, @script.filename, class: 'input-large' %>
+  </div>
+
   <%= text_area_tag :content, @script.read, class: "hidden input-block-level #{@script.type}-editor" %>
 
-<div class="form-actions">
-  <%= submit_tag 'Save', class: 'btn btn-primary' %>
-  <%= link_to 'Back', scripts_path, class: 'btn pull' %>
-  <%= link_to 'Delete', scripts_path(script: @script.filename), confirm: 'You sure?', method: 'delete', class: 'btn btn-danger pull-right' %>
-</div>
-
+  <div class="form-actions">
+    <%= submit_tag 'Save', class: 'btn btn-primary' %>
+    <%= link_to 'Back', scripts_path, class: 'btn pull' %>
+    <%= link_to 'Delete', scripts_path(script: @script.filename), confirm: 'You sure?', method: 'delete', class: 'btn btn-danger pull-right' %>
+  </div>
 <% end %>
