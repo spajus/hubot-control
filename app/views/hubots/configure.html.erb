@@ -2,7 +2,7 @@
 
 <div class="row-fluid">
   <div class="span12">
-    <%= form_tag do %>
+    <%= form_tag nil, class: 'form form-inline' do %>
       <ul class="nav nav-pills">
         <li class="active"><a href="#variables" data-toggle="tab">Variables</a></li>
         <li><a href="#package" data-toggle="tab">package.json</a></li>
@@ -12,29 +12,35 @@
       <div id="editor-tabs">
 
         <div class="tab-pane active" id="variables">
-          <span class="help-inline">
+
+          <div class="alert alert-info">
               Define ENV variables in JSON, i.e.
               <code>{ "HUBOT_IRC_NICK":"hubot", "FOO":"bar" }</code>
-          </span>
+          </div>
+
           <%= text_area_tag :variables, params[:variables] || @config.variables,
                             id: 'cfg-variables', class: 'input-block-level json-editor' %>
         </div>
 
         <div class="tab-pane" id="package">
-          <span class="help-inline">
+
+          <div class="alert alert-info">
             Include adapter and other external dependencies in <code>dependencies</code> block
-          </span>
+          </div>
+
           <%= text_area_tag :package, params[:package] || @config.package,
                             id: 'cfg-package', class: 'input-block-level json-editor' %>
         </div>
 
         <div class="tab-pane" id="hubot-scripts">
-          <span class="help-inline">
+
+          <div class="alert alert-info">
             Include scripts by name from
             <%= link_to 'github/hubot-scripts',
                         'https://github.com/github/hubot-scripts/tree/master/src/scripts' %>.
             Or browse this <%= link_to 'catalog', 'http://hubot-script-catalog.herokuapp.com/' %>.
-          </span>
+          </div>
+
           <%= text_area_tag :hubot_scripts, params[:hubot_scripts] || @config.hubot_scripts,
                             id: 'cfg-hubot-scripts', class: 'input-block-level json-editor' %>
           <%= render partial: 'include_script', locals: { scripts: Script.list_scripts(@hubot),
@@ -42,7 +48,9 @@
         </div>
 
         <div class="tab-pane" id="external-scripts">
-          <span class="help-inline">Include external scripts (full path)</span>
+
+          <div class="alert alert-info">Include external scripts (full path)</div>
+
           <%= text_area_tag :external_scripts,
                             params[:external_scripts] || @config.external_scripts,
                             id: 'cfg-external-scripts', class: 'input-block-level json-editor' %>

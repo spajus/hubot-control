@@ -1,11 +1,12 @@
+<% base_dir = nil unless defined?(base_dir) %>
+<% select_id = "scripts-#{rand(0...10000)}" %>
+
 <div class="row-fluid">
   <div class="span12 well">
-    <% scripts.each do |script| %>
-      <%= link_to  '#', class: 'btn btn-small include-script',
-                  data: { target: target,
-                          script: defined?(base_dir) ? File.join(base_dir, script) : script } do %>
-        <i class="icon-plus"></i> <%= script %>
-      <% end %>
+    <%= select_tag :include_script, script_options_for_select(scripts, base_dir), id: select_id %>
+
+    <%= link_to  '#', class: 'btn include-script', data: { target: target, source: select_id } do %>
+      <i class="icon-plus"></i>
     <% end %>
   </div>
 </div>
