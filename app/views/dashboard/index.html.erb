@@ -1,1 +1,10 @@
-<div class="schematic"></div>
+<% if Hubot.count == 0 %>
+<h1>Welcome to Hubot Control</h1>
+<p>
+  Looks like you haven't got anything running yet. Start by
+  <%= link_to 'creating a hubot', new_hubot_path %>.
+</p>
+<% end %>
+
+<div class="schematic">
+</div>
