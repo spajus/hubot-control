@@ -34,7 +34,7 @@ class Hubot < ActiveRecord::Base
   end
 
   def status
-    running? ? "Running (pid: #{Shell.child_pids(pid).join(',')})" : 'Not running'
+    running? ? "Running (pid: #{Shell.child_pids(pid).join(', ')})" : 'Not running'
   end
 
   def to_s
@@ -56,7 +56,10 @@ class Hubot < ActiveRecord::Base
   end
 
   def start
-    self.pid = spawn(Shell.prepare(start_cmd(adapter, true), env(adapter), cwd), pgroup: true)
+    cmd = Shell.prepare(start_cmd(adapter, true), env(adapter), cwd)
+    cmd = "bin/daemonize '#{cmd}' '#{self.pid_path}'"
+    system cmd
+    self.pid = File.read(self.pid_path)
     self.save
   end
 
@@ -91,11 +94,15 @@ class Hubot < ActiveRecord::Base
     File.join(self.location, 'hubot.log')
   end
 
+  def pid_path
+    File.join(self.location, 'hubot.pid')
+  end
+
   private
 
-    def start_cmd(adapter = 'shell', nohup = false)
+    def start_cmd(adapter = 'shell', log = false)
       cmd = "bin/hubot -n '#{name}' -a #{adapter}"
-      cmd = "nohup #{cmd} > #{log_path}" if nohup
+      cmd = "#{cmd} 2>&1 > #{log_path}" if log
       cmd
     end
 

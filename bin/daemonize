@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+fork do
+  Process.setsid
+  exit if fork
+  pid = spawn(ENV, ARGV[0])
+  File.open(ARGV[1], 'w+') { |f| f.write pid }
+end

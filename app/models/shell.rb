@@ -7,11 +7,10 @@ class Shell
   ANSI_PATTERN = /(\e\[(([\d;]+)m|\d{1,2}([A-Z])))/
 
   def self.child_pids(pid)
-    Process.getpgid(pid)
     pipe = IO.popen("ps -ef | grep #{pid}")
     pipe.readlines.map do |line|
-      parts = line.split(/\s+/)
-      parts[2].to_i if parts[3] == pid.to_s and parts[2] != pipe.pid.to_s
+      parts = line.strip.split(/\s+/)
+      parts[1].to_i if parts[2] == pid.to_s and parts[1] != pipe.pid.to_s
     end.compact
   rescue => e
     Rails.logger.error(e)
@@ -21,8 +20,7 @@ class Shell
   def self.kill_tree(pid)
     self.child_pids(pid).each { |p| Process.kill("TERM", p) }
     Process.kill("TERM", pid)
-    Process.waitpid(pid)
-  rescue Errno::ESRCH
+  rescue Errno::ESRCH, Errno::ECHILD
     Rails.logger.error("Couldn't find process with pid: #{pid}")
   end
 
