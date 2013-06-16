@@ -21,6 +21,7 @@ gem 'twitter-bootstrap-rails', '~> 2.2'
 gem 'gon', '~> 4.1'
 gem 'codemirror-rails', '~> 3.13'
 gem 'less-rails-fontawesome', '~> 0.4'
+gem 'unicorn'
 
 
 # Use jquery as the JavaScript library
