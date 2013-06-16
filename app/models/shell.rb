@@ -15,6 +15,8 @@ class Shell
   rescue => e
     Rails.logger.error(e)
     []
+  ensure
+    pipe.close
   end
 
   def self.kill_tree(pid)
