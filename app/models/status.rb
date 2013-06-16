@@ -45,7 +45,12 @@ class Status
     end
 
     def can_run?
-      self.node && self.npm && self.coffee && self.hubot_dir_writable? && self.not_root?
+      self.node \
+        && self.npm \
+        && self.coffee \
+        && self.hubot \
+        && self.hubot_dir_writable? \
+        && self.not_root?
     end
 
   end
