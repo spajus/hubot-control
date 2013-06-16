@@ -5,7 +5,8 @@ Control self-hosted Hubot like a boss!
 
 ## Installation
 
-- Run it like a regular Rails 4 app, i.e. with `rails s` or deploy with Unicorn, Thin or Passenger
+- Run DB migrations with `rake db:migrate` 
+- Run it like a regular Rails 4 app. Try it out with `rails s`, run daemonized with `unicorn_rails -p <port> -D`.
 - Owner of rails app process must have write permissions to `#{Rails.root}/hubots` and `#{Rails.root}/scripts`, or just `#{Rails.root}`
 - It has no authorization mechanism yet, so make sure the URL is not accessible for public
 
