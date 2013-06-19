@@ -82,8 +82,9 @@ class Hubot < ActiveRecord::Base
     shell.close
   end
 
-  def url(path='/')
-    "http://#{Socket.gethostname}:#{port}#{path}"
+  def url(path='/', hostname = nil)
+    hostname ||= Socket.gethostname
+    "http://#{hostname}:#{port}#{path}"
   end
 
   def test_url(path='/')

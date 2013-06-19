@@ -18,7 +18,7 @@
   </tr>
   <tr>
     <td>HTTP</td>
-    <td><%= link_to @hubot.url('/hubot/info'), @hubot.url('/hubot/info') %></td>
+    <td><%= link_to @hubot.url('/hubot/info', request.host), @hubot.url('/hubot/info', request.host) %></td>
   </tr>
   <tr>
     <td>Log</td>
