@@ -21,7 +21,7 @@ class Shell
 
   def self.kill_tree(pid)
     self.child_pids(pid).each do |p|
-      self.child_pids(p).each { |pp| Process.kill_tree(pp) }
+      self.child_pids(p).each { |pp| self.kill_tree(pp) }
       Process.kill("TERM", p)
     end
     Process.kill("TERM", pid)
