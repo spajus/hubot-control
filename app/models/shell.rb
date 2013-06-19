@@ -20,7 +20,10 @@ class Shell
   end
 
   def self.kill_tree(pid)
-    self.child_pids(pid).each { |p| Process.kill("TERM", p) }
+    self.child_pids(pid).each do |p|
+      self.child_pids(p).each { |pp| Process.kill_tree(pp) }
+      Process.kill("TERM", p)
+    end
     Process.kill("TERM", pid)
   rescue Errno::ESRCH, Errno::ECHILD
     Rails.logger.error("Couldn't find process with pid: #{pid}")
