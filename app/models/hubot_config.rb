@@ -74,7 +74,7 @@ class HubotConfig
 
     def write_file(file, content)
       File.open(path_to(file), 'wb') do |f|
-        f.write(content.split("\n").map(&:strip).join("\n"))
+        f.write(content.split("\n").map(&:rstrip).join("\n"))
       end
     end
 end
