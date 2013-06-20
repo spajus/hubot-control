@@ -58,9 +58,18 @@ class Hubot < ActiveRecord::Base
   def start
     cmd = Shell.prepare(start_cmd(adapter, true), env(adapter), cwd)
     cmd = "bin/daemonize '#{cmd}' '#{self.pid_path}'"
-    system cmd
-    self.pid = File.read(self.pid_path)
-    self.save
+    if config.before_start_exists?
+      output = `#{File.expand_path(File.join(location, 'before_start.sh'))} 2>&1`
+      File.open(log_path, 'a+') { |f| f.write(output) } if output
+      return :error, "Failed running before_start.sh: #{output}" unless $?.success?
+    end
+    if system cmd
+      self.pid = File.read(self.pid_path)
+      Rails.logger.debug("PID: #{self.pid}")
+      self.save
+      return :notice, "Hubot started" if Shell.child_pids(self.pid).any?
+    end
+    return :error, "Hubot did not start, check log output"
   end
 
   def stop
@@ -103,7 +112,7 @@ class Hubot < ActiveRecord::Base
 
     def start_cmd(adapter = 'shell', log = false)
       cmd = "bin/hubot -n '#{name}' -a #{adapter}"
-      cmd = "#{cmd} 2>&1 > #{log_path}" if log
+      cmd = "#{cmd} 2>&1 >> #{log_path}" if log
       cmd
     end
 

@@ -48,7 +48,8 @@ class HubotsController < ApplicationController
     @hubot = Hubot.find(params[:id])
     unless @hubot.running?
       @hubot.install_packages
-      @hubot.start
+      event, message = @hubot.start
+      flash[event] = message
     end
     redirect_to @hubot
   end
@@ -63,6 +64,7 @@ class HubotsController < ApplicationController
   def interact
     @hubot = Hubot.find(params[:id])
     if request.get?
+      @hubot.install_packages
       @shell = @hubot.start_shell
       gon.hubot_stream_url = url_for(action: :interact_stream)
     elsif request.delete?
@@ -95,12 +97,14 @@ class HubotsController < ApplicationController
       package = params[:package]
       hubot_scripts = params[:hubot_scripts]
       external_scripts = params[:external_scripts]
+      before_start = params[:before_start]
 
       if validate_json({'variables' => variables,
                         'package.json' => package,
                         'hubot-scripts.json' => hubot_scripts,
                         'external-scripts.json' => external_scripts})
         @config.variables = variables
+        @config.before_start = before_start
         @config.package = package
         @config.hubot_scripts = hubot_scripts
         @config.external_scripts = external_scripts

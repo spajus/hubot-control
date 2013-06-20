@@ -12,6 +12,7 @@ initEditor = (clazz, type, options = {validator: null}) ->
       tabSize: 2
 
 initEditors = ->
+  initEditor '.shell-editor', 'shell'
   initEditor '.json-editor', { name: 'javascript', json: true }, validator: CodeMirror.jsonValidator
   initEditor '.javascript-editor', 'javascript', validator: CodeMirror.javascriptValidator
   initEditor '.coffeescript-editor', 'coffeescript', validator: CodeMirror.coffeeValidator

@@ -21,6 +21,7 @@
 //= require coffeelint
 //= require codemirror/modes/javascript
 //= require codemirror/modes/coffeescript
+//= require codemirror/modes/shell
 //= require codemirror/keymaps/vim
 //= require codemirror/addon/dialog/dialog
 //= require codemirror/addon/search/searchcursor

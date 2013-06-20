@@ -21,6 +21,23 @@ class HubotConfig
     @hubot.save
   end
 
+  def before_start_exists?
+     File.exist? path_to('before_start.sh')
+  end
+
+  def before_start
+    if before_start_exists?
+      read_file 'before_start.sh'
+    else
+      Script::BEFORE_START_TEMPLATE
+    end
+  end
+
+  def before_start=(content)
+    write_file 'before_start.sh', content
+    system "chmod a+x #{path_to('before_start.sh')}"
+  end
+
   def package
     read_file 'package.json'
   end
@@ -47,13 +64,17 @@ class HubotConfig
 
   private
 
+    def path_to(file)
+      File.join(@hubot.location, file)
+    end
+
     def read_file(file)
-      File.read(File.join(@hubot.location, file))
+      File.read(path_to(file))
     end
 
     def write_file(file, content)
-      File.open(File.join(@hubot.location, file), 'w') do |f|
-        f.write(content)
+      File.open(path_to(file), 'wb') do |f|
+        f.write(content.split("\n").map(&:strip).join("\n"))
       end
     end
 end

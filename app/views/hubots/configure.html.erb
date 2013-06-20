@@ -5,6 +5,7 @@
     <%= form_tag nil, class: 'form form-inline' do %>
       <ul class="nav nav-pills">
         <li class="active"><a href="#variables" data-toggle="tab">Variables</a></li>
+        <li><a href="#before-start" data-toggle="tab">before_start.sh</a></li>
         <li><a href="#package" data-toggle="tab">package.json</a></li>
         <li><a href="#hubot-scripts" data-toggle="tab">hubot-scripts.json</a></li>
         <li><a href="#external-scripts" data-toggle="tab">external-scripts.json</a></li>
@@ -30,6 +31,16 @@
 
           <%= text_area_tag :package, params[:package] || @config.package,
                             id: 'cfg-package', class: 'input-block-level json-editor' %>
+        </div>
+
+        <div class="tab-pane" id="before-start">
+
+          <div class="alert alert-info">
+            This shell script will be executed everytime before hubot starts (except for test shell)
+          </div>
+
+          <%= text_area_tag :before_start, params[:before_start] || @config.before_start,
+                            id: 'cfg-before_start', class: 'input-block-level shell-editor' %>
         </div>
 
         <div class="tab-pane" id="hubot-scripts">

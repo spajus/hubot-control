@@ -1,5 +1,16 @@
 class Script
 
+  BEFORE_START_TEMPLATE = <<-END
+#!/bin/bash
+#
+# This script will be executed before Hubot starts. You may need such a script for more
+# complicated adapters, like Skype. Example of skype startup script:
+#
+# export DISPLAY="localhost:10"
+# echo "starting skype on xvfb, display 10"
+# nohup xvfb-run -n 10 -s "-screen 10 800x600x16" /usr/bin/skype &
+END
+
   COFFEE_TEMPLATE = <<-END
 # Description
 #   <description of the scripts functionality>
