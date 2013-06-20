@@ -6,6 +6,7 @@ class HubotsController < ApplicationController
   end
 
   def show
+    gon.log_stream_url = url_for(action: :log)
   end
 
   def edit

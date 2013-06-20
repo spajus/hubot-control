@@ -23,7 +23,7 @@
   <tr>
     <td>Log</td>
     <td>
-      <%= text_area_tag "log", @hubot.log_tail(5), disabled: 'disabled', class: 'input-block-level hubot-log' %>
+      <%= text_area_tag "log", @hubot.log_tail(5), disabled: 'disabled', class: 'input-block-level hubot-log', id: 'log' %>
       <span class="pull-left"><%= @hubot.log_path %></span>
       <%= link_to "more", log_hubot_path(@hubot), class: 'btn pull-right' %>
     </td>
@@ -43,3 +43,6 @@
 <%= link_to 'Destroy', @hubot, class: 'btn btn-danger pull-right',  method: :delete %>
 </div>
 
+<%= content_for :scripts do %>
+  <%= javascript_include_tag :hubot_log %>
+<% end %>
