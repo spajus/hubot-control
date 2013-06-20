@@ -4,11 +4,33 @@ class Script
 #!/bin/bash
 #
 # This script will be executed before Hubot starts. You may need such a script for more
-# complicated adapters, like Skype. Example of skype startup script:
+# complicated adapters, like Skype. Example of Skype startup script for linux:
 #
 # export DISPLAY="localhost:10"
-# echo "starting skype on xvfb, display 10"
-# nohup xvfb-run -n 10 -s "-screen 10 800x600x16" /usr/bin/skype &
+#
+# skype_running=`ps -ef | grep /usr/bin/skype | grep -v grep | wc -l`
+#
+# if [ "$skype_running" -ne "2" ]; then
+#
+#   echo "Skype not fully running"
+#   echo "Killing stray /usr/bin/skype processes"
+#   ps -ef | grep /usr/bin/skype | grep -v grep | awk '{print $2}' | xargs kill -9
+#
+#   xvfb_running=`ps -ef | grep 'Xvfb :10' | grep -v grep | wc -l`
+#   if [ "$xvfb_running" -ne "0" ]; then
+#     echo "Xvfb running, killing it"
+#     kill -9 `ps -ef | grep 'Xvfb :10' | grep -v grep | awk '{print $2}'`
+#   fi;
+#
+#   echo "Starting skype on Xvfb, display 10"
+#   xvfb-run -n 10 -s "-screen 10 800x600x16" /usr/bin/skype &
+#   echo "Sleeping 30 seconds while skype starts"
+#   sleep 30
+#   exit 0
+# fi;
+#
+# echo "Skype seems to be running"
+# ps -ef | grep /usr/bin/skype | grep -v grep
 END
 
   COFFEE_TEMPLATE = <<-END
