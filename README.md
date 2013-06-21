@@ -18,10 +18,6 @@ Control self-hosted Hubot like a boss!
 4. Click on Hubot name in the sidebar to control it
 5. Develop scripts with built-in editor
 
-## Disclaimer
-
-This project is in early beta stage, install and use at your own risk.
-
 ## Features
 
 ### Check server compatibility
