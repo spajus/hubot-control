@@ -108,6 +108,15 @@ class Hubot < ActiveRecord::Base
     File.join(self.location, 'hubot.pid')
   end
 
+  def self.find_free_ports
+    ports = Hubot.select("max(port) as port, max(test_port) as test_port").first
+    if ports
+      return ports.port + 1, ports.test_port + 1
+    else
+      return 8000, 9000
+    end
+  end
+
   private
 
     def start_cmd(adapter = 'shell', log = false)

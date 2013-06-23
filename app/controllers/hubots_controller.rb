@@ -26,6 +26,7 @@ class HubotsController < ApplicationController
   def new
     @creating_hubot = true
     @hubot = Hubot.new
+    @hubot.port, @hubot.test_port = Hubot.find_free_ports
   end
 
   def create
