@@ -109,7 +109,11 @@
               <li class="nav-header">Scripts</li>
               <% if Script.list.any? %>
                 <% Script.list.each do |script| %>
-                  <li class="<%= 'active' if params[:controller] == 'scripts' && params[:script] == script %>"><%= link_to script, edit_scripts_path(script: script) %></li>
+                  <li class="<%= 'active' if params[:controller] == 'scripts' && params[:script] == script %>">
+                    <%= link_to edit_scripts_path(script: script) do %>
+                      <i class="icon-cog"></i> <%= script %>
+                    <% end %>
+                  </li>
                 <% end %>
               <% end %>
               <hr />
