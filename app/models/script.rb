@@ -107,12 +107,12 @@ END
 
   def self.list
     return [] unless Dir.exist? Script.base_dir
-    Dir.entries(Script.base_dir).reject { |d| d.match(/^\./) }
+    Dir.entries(Script.base_dir).reject { |d| d.match(/^\./) }.sort
   end
 
   def self.list_scripts(hubot)
     scripts_dir = File.join(hubot.location, 'node_modules', 'hubot-scripts', 'src', 'scripts')
-    Dir.entries(scripts_dir).reject { |d| d.match(/^\./) }
+    Dir.entries(scripts_dir).reject { |d| d.match(/^\./) }.sort
   end
 
   def initialize(name)
