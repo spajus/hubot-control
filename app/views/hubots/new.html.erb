@@ -3,7 +3,7 @@
   <%= form_for @hubot, html: { class: 'form form-inline' } do |f| %>
     <%= render 'hubot_fields', f: f %>
     <div class="form-actions">
-      <%= f.submit 'Create', class: 'btn btn-primary' %>
+      <%= f.submit 'Create', class: 'btn btn-primary js-loader', data: { 'loading-text' => 'Building Hubot, please wait...' } %>
     </div>
   <% end %>
 </div>
