@@ -21,30 +21,30 @@ Control self-hosted Hubot like a boss!
 ## Features
 
 ### Check server compatibility
-![Hubot Check Prerequisites](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-5.png)
+![Hubot Check Prerequisites](https://dl.dropboxusercontent.com/u/176100/hubot-control/screens/status.png)
 
 ### Create Hubot instances from web interface
-![Create Hubot](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-3.png)
+![Create Hubot](https://dl.dropboxusercontent.com/u/176100/hubot-control/screens/build.png)
 
 ### Test your Hubot via interactive web shell
-![Test Hubot](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-6.png)
+![Test Hubot](https://dl.dropboxusercontent.com/u/176100/hubot-control/screens/shell.png)
 
 ### Control your Hubot
-![Hubot Control Panel](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-1.png)
+![Hubot Control Panel](https://dl.dropboxusercontent.com/u/176100/hubot-control/screens/hubot-status.png)
 
-### Develop Hubot scripts
-![Hubot Control Panel](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-7.png)
+### Edit pre-startup script
+![Hubot before start](https://dl.dropboxusercontent.com/u/176100/hubot-control/screens/before-start.png)
 
-### Edit Variables and configuration files
-![Hubot Configuration](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-2.png)
+### Manage and develop custom Hubot scripts
+![Hubot Scripts](https://dl.dropboxusercontent.com/u/176100/hubot-control/screens/scripts.png)
+![Edit Hubot Scripts](https://dl.dropboxusercontent.com/u/176100/hubot-control/screens/edit-script.png)
+![Include External Scripts](https://dl.dropboxusercontent.com/u/176100/hubot-control/screens/external-scripts.png)
+
+### Edit variables and configuration files
+![Hubot Configuration](https://dl.dropboxusercontent.com/u/176100/hubot-control/screens/variables.png)
 
 ### Tail logs to troubleshoot problems
-![Hubot Log](https://dl.dropboxusercontent.com/u/176100/hubot-control/hubot-control-4.png)
-
-## TODO
-
-  - Auto-install adapter dependencies
-  - Configuration templates
+![Hubot Log](https://dl.dropboxusercontent.com/u/176100/hubot-control/screens/log.png)
 
 ## Contributing
 
