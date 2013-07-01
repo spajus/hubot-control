@@ -19,4 +19,7 @@
 /hubots
 /scripts
 
+# Ignore compiled assets
+/public/assets
+
 npm-debug.log
