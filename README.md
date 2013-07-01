@@ -23,6 +23,8 @@ heroku open
 
 Heroku support is still experimental, but you can find some [helpful tips here](https://github.com/spajus/hubot-control/pull/2).
 
+A somewhat crippled Heroku demo: http://hubot-control-demo.herokuapp.com/
+
 ## Usage
 
 1. Check status page and install missing dependencies for Hubot
