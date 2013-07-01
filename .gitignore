@@ -19,4 +19,10 @@
 /hubots
 /scripts
 
+# Ignore compiled assets
+/public/assets
+
+# Ignore node modules
+/node_modules
+
 npm-debug.log
