@@ -10,6 +10,10 @@ Control self-hosted Hubot like a boss!
 - Owner of rails app process must have write permissions to `#{Rails.root}/hubots` and `#{Rails.root}/scripts`, or just `#{Rails.root}`
 - It has no authorization mechanism yet, so make sure the URL is not accessible for public
 
+## Running on Heroku
+
+Heroku support is still experimental, but you can find some [helpful tips here](https://github.com/spajus/hubot-control/pull/2).
+
 ## Usage
 
 1. Check status page and install missing dependencies for Hubot
