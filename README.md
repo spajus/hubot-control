@@ -12,6 +12,15 @@ Control self-hosted Hubot like a boss!
 
 ## Running on Heroku
 
+```
+git clone git@github.com:spajus/hubot-control.git && cd hubot-control
+heroku create --buildpack https://github.com/rtgibbons/heroku-buildpack-ruby-nodejs.git
+git push heroku master
+heroku config:add PATH=/app/node_modules/.bin:/app/bin:/app/vendor/bundle/ruby/2.0.0/bin:/usr/local/bin:/usr/bin:/bin
+heroku run rake db:migrate
+heroku open
+```
+
 Heroku support is still experimental, but you can find some [helpful tips here](https://github.com/spajus/hubot-control/pull/2).
 
 ## Usage
