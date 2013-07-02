@@ -149,6 +149,7 @@ END
   end
 
   def write(content)
+    FileUtils.mkdir_p Script.base_dir
     File.open(@file, "w") do |f|
       f.write(content)
     end
