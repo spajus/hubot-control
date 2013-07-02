@@ -69,12 +69,19 @@ class Hubot < ActiveRecord::Base
       return :error, "Failed running before_start.sh: #{output}" unless $?.success?
     end
     if system cmd
-      self.pid = File.read(self.pid_path)
+      begin
+        self.pid = File.read(self.pid_path)
+      rescue
+        sleep 3
+        self.pid = File.read(self.pid_path)
+      end
       Rails.logger.debug("PID: #{self.pid}")
       self.save
       return :notice, "Hubot started" if Shell.child_pids(self.pid).any?
     end
     return :error, "Hubot did not start, check log output"
+  rescue => e
+    return :error, "Hubot did not start: #{e}"
   end
 
   def stop
