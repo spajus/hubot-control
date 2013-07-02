@@ -32,14 +32,16 @@
 
 <div class="form-actions">
 
-<% if @hubot.running? %>
-  <%= link_to 'Stop', stop_hubot_path(@hubot), method: 'post', class: 'btn btn-warning' %>
-<% else %>
-  <%= link_to 'Start', start_hubot_path(@hubot), method: 'post', class: 'btn btn-success' %>
+<% if @hubot.exists? %>
+  <% if @hubot.running? %>
+    <%= link_to 'Stop', stop_hubot_path(@hubot), method: 'post', class: 'btn btn-warning' %>
+  <% else %>
+    <%= link_to 'Start', start_hubot_path(@hubot), method: 'post', class: 'btn btn-success' %>
+  <% end %>
+  <%= link_to 'Edit', edit_hubot_path(@hubot), class: 'btn btn-primary' %>
+  <%= link_to 'Configure', configure_hubot_path(@hubot), class: 'btn btn-primary', 'data-no-turbolink' => true %>
+  <%= link_to 'Test shell', interact_hubot_path(@hubot), class: 'btn btn-primary' %>
 <% end %>
-<%= link_to 'Edit', edit_hubot_path(@hubot), class: 'btn btn-primary' %>
-<%= link_to 'Configure', configure_hubot_path(@hubot), class: 'btn btn-primary', 'data-no-turbolink' => true %>
-<%= link_to 'Test shell', interact_hubot_path(@hubot), class: 'btn btn-primary' %>
 <%= link_to 'Destroy', @hubot, class: 'btn btn-danger pull-right',  method: :delete %>
 </div>
 
