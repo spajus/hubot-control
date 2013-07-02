@@ -16,18 +16,20 @@
     <td>Location</td>
     <td><%= @hubot.location %></td>
   </tr>
-  <tr>
-    <td>HTTP</td>
-    <td><%= link_to @hubot.url('/hubot/info', request.host), @hubot.url('/hubot/info', request.host) %></td>
-  </tr>
-  <tr>
-    <td>Log</td>
-    <td>
-      <%= text_area_tag "log", @hubot.log_tail(5), disabled: 'disabled', class: 'input-block-level hubot-log', id: 'log' %>
-      <span class="pull-left"><%= @hubot.log_path %></span>
-      <%= link_to "more", log_hubot_path(@hubot), class: 'btn pull-right' %>
-    </td>
-  </tr>
+  <% if @hubot.exists? %>
+    <tr>
+      <td>HTTP</td>
+      <td><%= link_to @hubot.url('/hubot/info', request.host), @hubot.url('/hubot/info', request.host) %></td>
+    </tr>
+    <tr>
+      <td>Log</td>
+      <td>
+        <%= text_area_tag "log", @hubot.log_tail(5), disabled: 'disabled', class: 'input-block-level hubot-log', id: 'log' %>
+        <span class="pull-left"><%= @hubot.log_path %></span>
+        <%= link_to "more", log_hubot_path(@hubot), class: 'btn pull-right' %>
+      </td>
+    </tr>
+  <% end %>
 </table>
 
 <div class="form-actions">
@@ -46,5 +48,5 @@
 </div>
 
 <%= content_for :scripts do %>
-  <%= javascript_include_tag :hubot_log %>
+  <%= javascript_include_tag :hubot_log if @hubot.exists? %>
 <% end %>
