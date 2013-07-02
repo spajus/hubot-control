@@ -98,7 +98,7 @@ module.exports = function(robot) {
   robot.router.get("/foo", function(req, res) {
     res.end("bar");
   });
-}
+};
 END
 
   def self.base_dir
