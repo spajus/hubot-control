@@ -1,9 +1,13 @@
 <li <% if hubot.id == current_hubot_id %>class="active"<% end %>>
   <%= link_to hubot do %>
-    <% if hubot.running? %>
-      <i class="icon-ok-sign"></i>
+    <% if hubot.exists? %>
+      <% if hubot.running? %>
+        <i class="icon-ok-sign"></i>
+      <% else %>
+        <i class="icon-remove-sign"></i>
+      <% end %>
     <% else %>
-      <i class="icon-remove-sign"></i>
+      <i class="icon-exclamation-sign"></i>
     <% end %>
     <%= hubot.title %>
   <% end %>

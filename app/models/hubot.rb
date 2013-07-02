@@ -29,11 +29,16 @@ class Hubot < ActiveRecord::Base
     @output = "#{output}#{val}"
   end
 
+  def exists?
+    File.exist? self.location
+  end
+
   def running?
     pid.present? && Shell.child_pids(pid).any?
   end
 
   def status
+    return "Missing in file system!" unless exists?
     running? ? "Running (pid: #{Shell.child_pids(pid).join(', ')})" : 'Not running'
   end
 
