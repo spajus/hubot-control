@@ -8,6 +8,7 @@ HubotControl::Application.routes.draw do
       match 'interact_stream',  via: [:get, :post]
       match 'configure',        via: [:get, :post]
       match 'log',              via: [:get, :post]
+      match 'log_truncate',     via: [:post]
       post  'start'
       post  'stop'
     end

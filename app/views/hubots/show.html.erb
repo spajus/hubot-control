@@ -38,7 +38,7 @@
   <% if @hubot.running? %>
     <%= link_to 'Stop', stop_hubot_path(@hubot), method: 'post', class: 'btn btn-warning' %>
   <% else %>
-    <%= link_to 'Start', start_hubot_path(@hubot), method: 'post', class: 'btn btn-success' %>
+    <%= link_to 'Start', start_hubot_path(@hubot), method: 'post', class: 'btn btn-success js-loader', data: {'loading-text' => 'Starting...' } %>
   <% end %>
   <%= link_to 'Edit', edit_hubot_path(@hubot), class: 'btn btn-primary' %>
   <%= link_to 'Configure', configure_hubot_path(@hubot), class: 'btn btn-primary', 'data-no-turbolink' => true %>

@@ -1,8 +1,9 @@
 <h1><%= @hubot.title %> log</h1>
 
+<div class="alert alert-info"><%= @hubot.log_path %></div>
 <%= text_area_tag :log, @log, id: 'log', disabled: 'disabled', class: 'input-block-level hubot-log-full' %>
 
-<span class="pull-left"><%= @hubot.log_path %></span>
+<%= link_to "truncate", log_truncate_hubot_path(@hubot), class: 'btn btn-danger', method: 'post' %>
 <%= link_to "Back", @hubot, class: 'btn pull-right' %>
 
 <%= content_for :scripts do %>

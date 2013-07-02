@@ -91,6 +91,11 @@ class HubotsController < ApplicationController
     gon.log_stream_url = url_for(action: :log)
   end
 
+  def log_truncate
+    system ": > #{@hubot.log_path}"
+    redirect_to hubot_path(@hubot)
+  end
+
   def configure
     @config = @hubot.config
     if request.post?
