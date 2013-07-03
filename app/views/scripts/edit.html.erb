@@ -6,6 +6,7 @@
     <span class="add-on"><%= Script.base_dir %>/</span>
     <%= text_field_tag :filename, @script.filename, class: 'input-large' %>
   </div>
+  <button id="vim-mode" type="button" class="btn pull-right" data-toggle="button">VIM Mode</button>
 
   <%= text_area_tag :content, @script.read, class: "hidden input-block-level #{@script.type}-editor" %>
 

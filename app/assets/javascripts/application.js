@@ -19,6 +19,7 @@
 //= require jsonlint
 //= require coffee-script
 //= require coffeelint
+//= require jquery.cookie
 //= require codemirror/modes/javascript
 //= require codemirror/modes/coffeescript
 //= require codemirror/modes/shell

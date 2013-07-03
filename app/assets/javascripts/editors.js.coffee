@@ -1,9 +1,12 @@
 window.editors = []
 
 initEditor = (clazz, type, options = {validator: null}) ->
+  keyMap = $.cookie('editor.keyMap')
+  keyMap = 'default' unless keyMap in ['vim', 'default']
   $(clazz).each (idx, elem) ->
     window.editors.push CodeMirror.fromTextArea elem,
       mode: type
+      keyMap: keyMap
       theme: 'solarized dark'
       gutters: ["CodeMirror-lint-markers"]
       viewportMargin: Infinity
@@ -21,3 +24,4 @@ initEditors()
 $('[data-toggle="tab"]').on 'click', ->
   for editor in window.editors
     setTimeout(editor.refresh, 100)
+
