@@ -27,6 +27,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.10)
+    bcrypt-ruby (3.1.1)
     builder (3.1.4)
     codemirror-rails (3.14)
       railties (>= 3.0, < 5)
@@ -39,6 +40,11 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     commonjs (0.2.6)
+    devise (3.0.0)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -70,6 +76,7 @@ GEM
     mime-types (1.23)
     minitest (4.7.5)
     multi_json (1.7.7)
+    orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
     pry (0.9.12.2)
@@ -146,6 +153,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -153,6 +162,7 @@ PLATFORMS
 DEPENDENCIES
   codemirror-rails (~> 3.13)
   coffee-rails (~> 4.0.0)
+  devise (~> 3.0.0)
   gon (~> 4.1)
   jbuilder (~> 1.0.1)
   jquery-rails

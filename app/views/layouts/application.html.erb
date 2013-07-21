@@ -1,131 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Hubot Control" %></title>
-    <%= csrf_meta_tags %>
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
-    <![endif]-->
-
-    <%= stylesheet_link_tag "application", :media => "all" %>
-
-    <!-- For third-generation iPad with high-resolution Retina display: -->
-    <!-- Size should be 144 x 144 pixels -->
-    <%= favicon_link_tag 'images/apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
-
-    <!-- For iPhone with high-resolution Retina display: -->
-    <!-- Size should be 114 x 114 pixels -->
-    <%= favicon_link_tag 'images/apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
-
-    <!-- For first- and second-generation iPad: -->
-    <!-- Size should be 72 x 72 pixels -->
-    <%= favicon_link_tag 'images/apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
-
-    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <!-- Size should be 57 x 57 pixels -->
-    <%= favicon_link_tag 'images/apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
-
-    <!-- For all other devices -->
-    <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-  </head>
+  <%= render 'shared/head' %>
   <body>
-
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <%= link_to root_path, class: 'brand' do %>
-            <i class="icon-chevron-sign-right"></i> Hubot Control
-          <% end %>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <li class="<%= 'active' if params[:controller] == 'status' %>">
-                <%= link_to status_path do %>
-                  <i class="icon-info-sign"></i> Status
-                <% end %>
-              </li>
-              <li class="<%= 'active' if params[:controller] == 'scripts' %>">
-                <%= link_to scripts_path do %>
-                  <i class="icon-book"></i> Scripts
-                <% end %>
-              </li>
-              <ul class="nav">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="icon-question-sign"></i> Resources
-                    <b class="caret"></b>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a href="https://github.com/github/hubot"><i class="icon-github"></i> Hubot</a></li>
-                    <li><a href="https://github.com/github/hubot-scripts"><i class="icon-github"></i> Hubot Scripts</a></li>
-                    <li><a href="http://nodejs.org/api/"><i class="icon-globe"></i> Node.js API</a></li>
-                    <li><a href="https://github.com/spajus/hubot-control"><i class="icon-github"></i> Hubot Control</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
+    <%= render 'shared/navbar' %>
     <div class="container-fluid">
       <% if flash.keys.any? %>
         <%= bootstrap_flash %>
         <% flash.clear %>
       <% end %>
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-pills nav-stacked">
-              <li class="nav-header">Hubots</li>
-              <% if Hubot.count > 0 %>
-                <% Hubot.find_each do |instance| %>
-                  <%= render instance, current_hubot_id: @hubot.try(:id) %>
-                <% end %>
-              <% end %>
-              <hr />
-              <% if Status.can_run? %>
-                <% unless @creating_hubot %>
-                  <%= link_to 'Add Hubot', new_hubot_path, class: 'btn btn-success' %>
-                <% end %>
-              <% else %>
-                <%= link_to 'Check Status', status_path, class: 'btn btn-danger' %>
-              <% end %>
-            </ul>
-          </div><!--/.well -->
-          <div class="well sidebar-nav">
-            <ul class="nav nav-pills nav-stacked">
-              <li class="nav-header">Scripts</li>
-              <% if Script.list.any? %>
-                <% Script.list.each do |script| %>
-                  <li class="<%= 'active' if params[:controller] == 'scripts' && params[:script] == script %>">
-                    <%= link_to edit_scripts_path(script: script) do %>
-                      <i class="icon-cog"></i> <%= script %>
-                    <% end %>
-                  </li>
-                <% end %>
-              <% end %>
-              <hr />
-              <% unless @creating_hubot %>
-                <%= link_to 'New Script', scripts_path, class: 'btn btn-success' %>
-              <% end %>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
-          <%= yield %>
-        </div>
+        <% if user_signed_in? && !(params[:controller].match('devise')) %>
+          <%= render 'shared/sidebar' %>
+          <div class="span9">
+            <%= yield %>
+          </div>
+        <% else %>
+          <div class="span4">
+            <%= yield %>
+          </div>
+          <div class="span8">
+            <div class="schematic"></div>
+          </div>
+        <% end %>
       </div><!--/row-->
 
       <footer>

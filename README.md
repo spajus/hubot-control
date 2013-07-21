@@ -5,10 +5,11 @@ Control self-hosted Hubot like a boss!
 
 ## Installation
 
-- Run DB migrations with `rake db:migrate` 
+- Run DB migrations with `rake db:migrate`
+- Change `config.action_mailer.default_url_options` in `config/environments/*` (optional)
 - Run it like a regular Rails 4 app. Try it out with `rails s`, run daemonized with `unicorn_rails -p <port> -D`.
 - Owner of rails app process must have write permissions to `#{Rails.root}/hubots` and `#{Rails.root}/scripts`, or just `#{Rails.root}`
-- It has no authorization mechanism yet, so make sure the URL is not accessible for public
+- Use `admin@hubot-control.org` / `hubot` to log in
 
 ## Running on Heroku
 
@@ -23,7 +24,7 @@ heroku open
 
 Heroku support is still experimental, but you can find some [helpful tips here](https://github.com/spajus/hubot-control/pull/2).
 
-A somewhat crippled Heroku demo: http://hubot-control-demo.herokuapp.com/
+Heroku demo: http://hubot-control-demo.herokuapp.com/ (usually broken due to periodic file system wipeouts, see Issue #4)
 
 ## Usage
 

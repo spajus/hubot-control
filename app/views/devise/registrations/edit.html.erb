@@ -1,0 +1,37 @@
+<h2>Edit Profile</h2>
+
+<div class="well">
+  <%= form_for(resource, :as => resource_name, :url => user_registration_path, :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, class: 'input-block-level' %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div>
+      <%= f.label :password %> <span>(leave blank unless you want to change it)</span>
+      <%= f.password_field :password, autocomplete: 'off', class: 'input-block-level' %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'input-block-level' %>
+    </div>
+
+    <div>
+      <%= f.label :current_password %>
+      <%= f.password_field :current_password, class: 'input-block-level' %>
+    </div>
+
+    <hr />
+
+    <%= f.submit "Update", class: 'btn btn-primary' %>
+  <% end %>
+
+  <%= link_to "Back", :back %>
+</div>
