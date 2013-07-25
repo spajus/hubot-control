@@ -24,7 +24,7 @@ heroku open
 
 Heroku support is still experimental, but you can find some [helpful tips here](https://github.com/spajus/hubot-control/pull/2).
 
-Heroku demo: http://hubot-control-demo.herokuapp.com/ (usually broken due to periodic file system wipeouts, see Issue #4)
+Heroku demo: http://hubot-control-demo.herokuapp.com/ (usually broken due to periodic file system wipeouts, see [issues/4](https://github.com/spajus/hubot-control/issues/4))
 
 ## Usage
 
