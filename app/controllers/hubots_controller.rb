@@ -16,7 +16,7 @@ class HubotsController < ApplicationController
     @hubot.update_attributes(hubot_params)
     @hubot.save
     if @hubot.errors.any?
-      flash[:error] = @hubot.errors.messages.collect { |k, v| "#{k} #{v.join(', ')}".capitalize }
+      flash_errors
     else
       flash[:success] = "#{@hubot.title} updated!"
     end
@@ -32,7 +32,7 @@ class HubotsController < ApplicationController
   def create
     @hubot = Hubot.create(hubot_params)
     if @hubot.errors.any?
-      flash[:error] = @hubot.errors.messages.collect { |k, v| "#{k} #{v.join(', ')}".capitalize }
+      flash_errors
       render :new
     end
   end
@@ -121,6 +121,10 @@ class HubotsController < ApplicationController
   end
 
   private
+
+    def flash_errors
+      flash[:error] = @hubot.errors.messages.collect { |k, v| "#{k} #{v.join(', ')}".capitalize }
+    end
 
     def validate_json(files = {})
       errors = []
