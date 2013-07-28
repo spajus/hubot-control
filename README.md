@@ -3,6 +3,8 @@ Hubot Control
 
 Control self-hosted Hubot like a boss!
 
+[![Code Climate](https://codeclimate.com/github/spajus/hubot-control.png)](https://codeclimate.com/github/spajus/hubot-control)
+
 ## Installation
 
 - Run DB migrations with `rake db:migrate`
