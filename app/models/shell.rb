@@ -8,15 +8,17 @@ class Shell
 
   def self.child_pids(pid)
     pipe = IO.popen("ps -ef | grep #{pid}")
-    pipe.readlines.map do |line|
-      parts = line.strip.split(/\s+/)
-      parts[1].to_i if parts[2] == pid.to_s and parts[1] != pipe.pid.to_s
-    end.compact
+    pipe.readlines.map { |line| child_pid(line, pid, pipe.pid) }.compact
   rescue => e
     Rails.logger.error(e)
     []
   ensure
     pipe.close
+  end
+
+  def self.child_pid(line, parent_pid, own_pid)
+    parts = line.strip.split(/\s+/)
+    parts[1].to_i if parts[2] == parent_pid.to_s and parts[1] != own_pid.to_s
   end
 
   def self.kill_tree(pid)
