@@ -74,4 +74,10 @@ describe HubotsController do
       it { should be_success }
     end
   end
+
+  describe 'POST #truncate' do
+    subject { post :log_truncate, id: hubot.id }
+
+    it { should redirect_to hubot_path(hubot) }
+  end
 end
