@@ -13,6 +13,6 @@
   <div class="form-actions">
     <%= submit_tag 'Save', class: 'btn btn-primary' %>
     <%= link_to 'Back', scripts_path, class: 'btn pull' %>
-    <%= link_to 'Delete', scripts_path(script: @script.filename), confirm: 'You sure?', method: 'delete', class: 'btn btn-danger pull-right' %>
+    <%= link_to 'Delete', scripts_path(script: @script.filename), data: { confirm: 'You sure?'}, method: 'delete', class: 'btn btn-danger pull-right' %>
   </div>
 <% end %>

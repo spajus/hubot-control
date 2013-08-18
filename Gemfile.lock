@@ -205,6 +205,7 @@ DEPENDENCIES
   pry-nav
   rails (= 4.0.0)
   rails_12factor
+  rspec-mocks (~> 2.0)
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0)
   sdoc

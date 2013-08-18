@@ -80,4 +80,34 @@ describe HubotsController do
 
     it { should redirect_to hubot_path(hubot) }
   end
+
+  describe '#configure' do
+
+    before do
+      HubotConfig.any_instance.stub(:read_file)
+      HubotConfig.any_instance.stub(:write_file)
+    end
+
+    context 'GET' do
+      subject { get :configure, id: hubot.id }
+
+      it { should be_success }
+    end
+
+    context 'POST' do
+      let(:params_hash) { {
+        id: hubot.id,
+        variables:        '{}',
+        package:          '{}',
+        hubot_scripts:    '[]',
+        external_scripts: '[]',
+        before_start:     '',
+      } }
+
+      subject { post :configure, params_hash }
+
+      it { should be_success }
+      its(:body) { should include('Updated all') }
+    end
+  end
 end

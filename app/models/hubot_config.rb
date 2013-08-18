@@ -4,7 +4,6 @@ class HubotConfig
     JSON.parse(json)
     true
   rescue
-    puts "INVALID!"
     false
   end
 
