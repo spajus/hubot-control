@@ -48,4 +48,15 @@ describe HubotsController do
       expect { subject }.to change { hubot.reload.title }.from(old_title).to(new_title)
     end
   end
+
+  describe 'DELETE #destroy' do
+    subject(:destroy_hubot) { delete :destroy, id: hubot.id }
+    before { destroy_hubot }
+
+    it { should redirect_to root_path }
+
+    specify { flash[:notice].should be_present }
+
+    specify { Hubot.where(id: hubot.id).count.should == 0 }
+  end
 end
