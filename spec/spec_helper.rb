@@ -15,7 +15,6 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
 
   config.include Devise::TestHelpers, type: :controller
-
   config.include FactoryGirl::Syntax::Methods
 
   # ## Mock Framework
@@ -44,4 +43,12 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.around do |example|
+    ActiveRecord::Base.transaction do
+      example.run
+      raise ActiveRecord::Rollback
+    end
+  end
+
 end
