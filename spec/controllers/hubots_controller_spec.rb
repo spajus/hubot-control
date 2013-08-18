@@ -16,5 +16,4 @@ describe HubotsController do
 
     it { should be_success }
   end
-
 end
