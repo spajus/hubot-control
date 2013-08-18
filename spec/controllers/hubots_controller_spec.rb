@@ -59,4 +59,19 @@ describe HubotsController do
 
     specify { Hubot.where(id: hubot.id).count.should == 0 }
   end
+
+  describe '#log' do
+
+    context 'GET' do
+      subject { get :log, id: hubot.id }
+
+      it { should be_success }
+    end
+
+    context 'POST' do
+      subject { post :log, id: hubot.id }
+
+      it { should be_success }
+    end
+  end
 end
