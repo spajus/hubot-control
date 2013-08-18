@@ -37,6 +37,11 @@ class Shell
     command
   end
 
+  def self.run(command)
+    `#{command}` unless Rails.env.test?
+  end
+
+
   def initialize(command, env=nil, cwd=nil)
     STDOUT.sync
     @master_pty, slave_pty = PTY.open

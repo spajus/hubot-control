@@ -77,7 +77,7 @@ class Hubot < ActiveRecord::Base
   end
 
   def log_tail(n=10)
-    `tail -n #{n} #{log_path}`.strip
+    Shell.run("tail -n #{n} #{log_path}").try(:strip)
   end
 
   def start_shell
@@ -119,7 +119,7 @@ class Hubot < ActiveRecord::Base
 
     def execute_before_start
       return unless config.before_start_exists?
-      output = `#{File.expand_path(File.join(location, 'before_start.sh'))} 2>&1`
+      output = Shell.run("#{File.expand_path(File.join(location, 'before_start.sh'))} 2>&1")
       File.open(log_path, 'a+') { |f| f.write(output) } if output
       return "Failed running before_start.sh: #{output}" unless $?.success?
     end
@@ -157,11 +157,11 @@ class Hubot < ActiveRecord::Base
 
     def install
       self.location = File.join(Hubot.base_dir, title.parameterize)
-      log `hubot --create #{self.location}`
-      log `cd #{self.location} && bin/hubot -v`
+      log Shell.run("hubot --create #{self.location}")
+      log Shell.run("cd #{self.location} && bin/hubot -v")
     end
 
     def uninstall
-      log `rm -rf #{self.location}`
+      log Shell.run("rm -rf #{self.location}")
     end
 end

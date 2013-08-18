@@ -3,19 +3,19 @@ class Status
   class << self
 
     def node
-      @@node ||= `node -v`.try(:strip)
+      @@node ||= Shell.run('node -v').try(:strip)
     end
 
     def npm
-      @@npm ||= `npm -v`.try(:strip)
+      @@npm ||= Shell.run('npm -v').try(:strip)
     end
 
     def coffee
-      @@coffee ||= `coffee -v`.try(:strip)
+      @@coffee ||= Shell.run('coffee -v').try(:strip)
     end
 
     def hubot
-      @@hubot ||= `hubot -v`.try(:strip)
+      @@hubot ||= Shell.run('hubot -v').try(:strip)
     end
 
     def hubot_dir_writable?
@@ -37,7 +37,7 @@ class Status
     end
 
     def sys_user
-      @@sys_user ||= `whoami`.try(:strip)
+      @@sys_user ||= Shell.run('whoami').try(:strip)
     end
 
     def not_root?
