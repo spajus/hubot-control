@@ -56,7 +56,7 @@ class HubotsController < ApplicationController
   end
 
   def stop
-    return redirect_to '/' unless request.post?
+    return redirect_to root_path unless request.post?
     @hubot = Hubot.find(params[:id])
     @hubot.stop if @hubot.running?
     redirect_to @hubot
@@ -139,7 +139,11 @@ class HubotsController < ApplicationController
     end
 
     def find_hubot
-      @hubot = Hubot.find params[:id] if params[:id]
+      @hubot = Hubot.where(id: params[:id]).first if params[:id]
+      unless @hubot
+        flash[:error] = "Hubot is not found"
+        redirect_to root_path
+      end
     end
 
     def hubot_params
