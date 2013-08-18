@@ -92,7 +92,7 @@ class HubotsController < ApplicationController
   end
 
   def log_truncate
-    system ": > #{@hubot.log_path}"
+    Shell.system ": > #{@hubot.log_path}"
     redirect_to hubot_path(@hubot)
   end
 

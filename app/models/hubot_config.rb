@@ -35,7 +35,7 @@ class HubotConfig
 
   def before_start=(content)
     write_file 'before_start.sh', content
-    system "chmod a+x #{path_to('before_start.sh')}"
+    Shell.system "chmod a+x #{path_to('before_start.sh')}"
   end
 
   def package

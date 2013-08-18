@@ -41,6 +41,10 @@ class Shell
     `#{command}` unless Rails.env.test?
   end
 
+  def self.system(command)
+    system(command) unless Rails.env.test?
+  end
+
 
   def initialize(command, env=nil, cwd=nil)
     STDOUT.sync

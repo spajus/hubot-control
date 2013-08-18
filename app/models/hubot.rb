@@ -56,7 +56,7 @@ class Hubot < ActiveRecord::Base
   end
 
   def install_packages
-    output = system("cd #{cwd} && npm install")
+    output = Shell.system("cd #{cwd} && npm install")
     raise "Failed installing dependencies with 'npm install': #{$?}" unless output
   end
 
@@ -76,7 +76,7 @@ class Hubot < ActiveRecord::Base
     self.save
   end
 
-  def log_tail(n=10)
+  def log_tail(n = 10)
     Shell.run("tail -n #{n} #{log_path}").try(:strip)
   end
 
@@ -89,12 +89,12 @@ class Hubot < ActiveRecord::Base
     shell.close
   end
 
-  def url(path='/', hostname = nil)
+  def url(path = '/', hostname = nil)
     hostname ||= Socket.gethostname
     "http://#{hostname}:#{port}#{path}"
   end
 
-  def test_url(path='/')
+  def test_url(path = '/')
     "http://#{Socket.gethostname}:#{test_port}#{path}"
   end
 
@@ -127,7 +127,7 @@ class Hubot < ActiveRecord::Base
     def execute_start_cmd
       cmd = Shell.prepare(start_cmd(adapter, true), env(adapter), cwd)
       cmd = "bin/daemonize '#{cmd}' '#{self.pid_path}'"
-      return unless system cmd
+      return unless Shell.system(cmd)
       read_pid
       Rails.logger.debug("PID: #{self.pid}")
       self.save
