@@ -19,6 +19,9 @@
 /hubots
 /scripts
 
+# Ignore coverage report
+/coverage
+
 # Ignore compiled assets
 /public/assets
 
