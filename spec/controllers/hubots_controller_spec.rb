@@ -110,4 +110,24 @@ describe HubotsController do
       its(:body) { should include('Updated all') }
     end
   end
+
+  describe 'POST #start' do
+    subject { post :start, id: hubot.id }
+
+    before { Hubot.any_instance.should_receive(:install_packages) }
+
+    it { should redirect_to hubot }
+  end
+
+  describe 'POST #stop' do
+    let(:hubot) { create :hubot, pid: 123 }
+    subject { post :stop, id: hubot.id }
+
+    before do
+      Hubot.any_instance.should_receive(:running?).and_return(true)
+      Shell.should_receive(:kill_tree).with(hubot.pid)
+    end
+
+    it { should redirect_to hubot }
+  end
 end
