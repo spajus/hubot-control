@@ -130,4 +130,39 @@ describe HubotsController do
 
     it { should redirect_to hubot }
   end
+
+  describe '#interact' do
+
+    context 'GET' do
+      subject { get :interact, id: hubot.id }
+
+      before { Hubot.any_instance.should_receive(:install_packages) }
+
+      it { should be_success }
+    end
+
+    context 'DELETE' do
+      subject { delete :interact, id: hubot.id }
+
+      before { Shell.any_instance.should_receive(:close) }
+
+      it { should redirect_to hubot }
+    end
+  end
+
+  describe '#interact_stream' do
+
+    context 'GET' do
+      subject { get :interact_stream, id: hubot.id }
+
+      it { should be_success }
+    end
+
+    context 'POST' do
+      subject { get :interact_stream, id: hubot.id }
+
+      it { should be_success }
+    end
+
+  end
 end

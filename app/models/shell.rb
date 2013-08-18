@@ -42,9 +42,12 @@ class Shell
   end
 
   def self.system(command)
-    system(command) unless Rails.env.test?
+    Kernel.system(command) unless Rails.env.test?
   end
 
+  def self.spawn(cmd, options)
+    Kernel.spawn(cmd, options) unless Rails.env.test?
+  end
 
   def initialize(command, env=nil, cwd=nil)
     STDOUT.sync
@@ -52,7 +55,7 @@ class Shell
     slave_pty.raw! # disable newline conversion.
     read_pipe, @write_pipe = IO.pipe
     cmd = Shell.prepare(command, env, cwd)
-    @pid = spawn(cmd, in: read_pipe, err: :out, out: slave_pty)
+    @pid = Shell.spawn(cmd, in: read_pipe, err: :out, out: slave_pty)
     read_pipe.close
     slave_pty.close
   end

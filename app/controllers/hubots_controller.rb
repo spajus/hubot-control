@@ -76,7 +76,6 @@ class HubotsController < ApplicationController
 
   def interact_stream
     @shell = Hubot.shell(params[:id])
-    puts "shell: #{@shell}"
     if request.get? && @shell
       return render text: @shell.readlines
     elsif request.post? && @shell
