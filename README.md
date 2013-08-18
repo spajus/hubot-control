@@ -3,6 +3,7 @@ Hubot Control
 
 Control self-hosted Hubot like a boss!
 
+[![Build Status](https://travis-ci.org/spajus/hubot-control.png)](https://travis-ci.org/spajus/hubot-control)
 [![Code Climate](https://codeclimate.com/github/spajus/hubot-control.png)](https://codeclimate.com/github/spajus/hubot-control)
 [![Dependency Status](https://gemnasium.com/spajus/hubot-control.png)](https://gemnasium.com/spajus/hubot-control)
 
