@@ -14,11 +14,11 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-gem 'therubyracer', '~> 0.11'
+gem 'therubyracer', '~> 0.12'
 gem 'less-rails', '~> 2.3'
 gem 'twitter-bootstrap-rails', '~> 2.2'
 gem 'gon', '~> 4.1'
-gem 'codemirror-rails', '~> 3.15'
+gem 'codemirror-rails', '~> 3.16'
 gem 'less-rails-fontawesome', '~> 0.4'
 gem 'unicorn'
 gem "devise", "~> 3.0.3"
