@@ -144,7 +144,10 @@ describe HubotsController do
     context 'DELETE' do
       subject { delete :interact, id: hubot.id }
 
-      before { Shell.any_instance.should_receive(:close) }
+      before do
+        hubot.start_shell
+        Shell.any_instance.should_receive(:close)
+      end
 
       it { should redirect_to hubot }
     end
