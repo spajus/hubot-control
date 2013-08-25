@@ -12,4 +12,11 @@ FactoryGirl.define do
     sequence(:test_port) { |n| 9000 + n }
     adapter 'shell'
   end
+
+  factory :git_sync do
+    factory :git_sync_scripts do
+      target 'scripts'
+    end
+  end
+
 end

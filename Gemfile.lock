@@ -61,6 +61,7 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    git (1.2.6)
     gon (4.1.1)
       actionpack (>= 2.3.0)
       json
@@ -196,6 +197,7 @@ DEPENDENCIES
   coveralls
   devise (~> 3.1.0)
   factory_girl_rails (~> 4.0)
+  git (~> 1.2.6)
   gon (~> 4.1)
   jbuilder (~> 1.5)
   jquery-rails
