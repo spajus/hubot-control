@@ -154,6 +154,12 @@ describe HubotsController do
   end
 
   describe '#interact_stream' do
+    let(:pty) { double(:pty) }
+
+    before do
+      PTY.stub(:open).and_return([pty, pty])
+      pty.stub(:gets).and_return("Some line")
+    end
 
     context 'GET' do
       subject { get :interact_stream, id: hubot.id }
