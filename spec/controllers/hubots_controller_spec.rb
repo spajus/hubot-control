@@ -4,7 +4,15 @@ describe HubotsController do
 
   let(:user) { create :user }
   let(:hubot) { create :hubot }
-  before { sign_in :user, user }
+  let(:pty) { double(:pty) }
+
+  before do
+    PTY.stub(:open).and_return([pty, pty])
+    pty.stub(:raw!)
+    pty.stub(:close)
+    pty.stub(:gets).and_return('stuff')
+    sign_in :user, user
+  end
 
   describe 'GET #index' do
     subject { get :index }

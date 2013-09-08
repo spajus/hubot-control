@@ -10,9 +10,53 @@ external-scripts.json, which can be found in configuration tabs.</p>
   <% end %>
   <hr />
   <ul class="nav nav-pills">
-    <% Script.list.each do |script| %>
+    <% @scripts.each do |script| %>
       <li><%= link_to script, edit_scripts_path(script: script) %></li>
     <% end %>
   </ul>
 </div>
+
+<% if @git_sync.persisted? %>
+  <%= form_tag git_pull_scripts_path do %>
+    <%= submit_tag 'Git Pull', class: 'btn btn-success js-loader', data: { 'loading-text' => 'Pulling, please wait...' } %>
+  <% end %>
+<% end %>
+
+<% if @git_sync.persisted? && @changed_files.any? %>
+  <h1>Commit Changes</h1>
+
+  <div class="well">
+    <% @changed_files.each do |changed| %>
+      <div><i class="icon-lightbulb"></i> <%= link_to changed, edit_scripts_path(script: changed) %></div>
+    <% end %>
+  </div>
+
+  <%= form_tag git_commit_scripts_path, class: 'form form-inline' do %>
+
+    <%= render 'git_syncs/commit' %>
+
+    <%= submit_tag 'Commit', class: 'btn btn-success js-loader', data: { 'loading-text' => 'Syncing with remote repo, please wait...' } %>
+    <%= link_to 'Reset local changes', git_reset_scripts_path, method: 'delete', class: 'btn btn-danger pull-right', confirm: 'Are you sure you want to do `git reset --hard` on your changes?' %>
+  <% end %>
+
+<% end %>
+
+<div style="clear: both;"></div>
+
+<h1>Git Settings</h1>
+
+<p>Sync your custom Hubot scripts in a separate repo</p>
+
+<%= form_tag git_sync_scripts_path, class: 'form form-inline' do %>
+
+  <%= render 'git_syncs/fields' %>
+
+  <% if @git_sync.persisted? %>
+    <%= submit_tag 'Update repo settings', class: 'btn btn-success' %>
+    <%= link_to 'Unlink repo', git_unlink_scripts_path, method: 'delete', class: 'btn btn-danger pull-right', confirm: 'Are you sure you want to unlink scripts from git repo?' %>
+  <% else %>
+    <%= submit_tag 'Set repo', class: 'btn btn-success js-loader', data: { 'loading-text' => 'Linking with git repo, please wait...' } %>
+  <% end %>
+
+<% end %>
 

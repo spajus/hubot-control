@@ -25,6 +25,12 @@ HubotControl::Application.routes.draw do
   resource :scripts do
     get :index
     match :edit, via: [:get, :post]
+
+    post :git_sync
+    post :git_commit
+    post :git_pull
+    delete :git_reset
+    delete :git_unlink
   end
 
 end

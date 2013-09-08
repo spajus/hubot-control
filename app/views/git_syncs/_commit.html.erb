@@ -1,0 +1,24 @@
+<table class="table table-striped table-bordered table-hover">
+  <tr>
+    <td width="15%">
+      <%= label_tag "Message" %>
+    </td>
+    <td width="50%">
+      <%= text_field_tag :message, nil, placeholder: 'Update scripts', maxlength: 70, class: 'input-block-level' %>
+    </td>
+    <td>
+      Short message (~50 chars according to <a href="http://git-scm.com/book/ch5-2.html#Commit-Guidelines">Git Commit Guidelines</a>)
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label_tag "Description" %>
+    </td>
+    <td>
+      <%= text_area_tag :full_message, nil, class: 'input-block-level' %>
+    </td>
+    <td>
+      Optional description. Bullet points are ok.
+    </td>
+  </tr>
+</table>
