@@ -3,10 +3,10 @@ Hubot Control
 
 Control self-hosted Hubot like a boss!
 
-[![Build Status](https://travis-ci.org/spajus/hubot-control.png)](https://travis-ci.org/spajus/hubot-control)
+[![Build Status](https://travis-ci.org/spajus/hubot-control.png?branch=master)](https://travis-ci.org/spajus/hubot-control)
 [![Coverage Status](https://coveralls.io/repos/spajus/hubot-control/badge.png?branch=master)](https://coveralls.io/r/spajus/hubot-control?branch=master)
-[![Code Climate](https://codeclimate.com/github/spajus/hubot-control.png)](https://codeclimate.com/github/spajus/hubot-control)
-[![Dependency Status](https://gemnasium.com/spajus/hubot-control.png)](https://gemnasium.com/spajus/hubot-control)
+[![Code Climate](https://codeclimate.com/github/spajus/hubot-control.png?branch=master)](https://codeclimate.com/github/spajus/hubot-control)
+[![Dependency Status](https://gemnasium.com/spajus/hubot-control.png?branch=master)](https://gemnasium.com/spajus/hubot-control)
 
 ## Installation
 
