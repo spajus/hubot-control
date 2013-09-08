@@ -24,6 +24,9 @@ RSpec.configure do |config|
 
   config.before(:each) do
     Script.stub(:list_scripts).and_return([ 'foo.coffee' ])
+    Git.stub(:open)
+    Git.stub(:clone)
+    Git.stub(:init)
   end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

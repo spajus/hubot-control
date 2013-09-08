@@ -22,7 +22,7 @@ gem 'codemirror-rails', '~> 3.16'
 gem 'less-rails-fontawesome', '~> 0.4'
 gem 'unicorn'
 gem "devise", "~> 3.1.0"
-
+gem 'git', '~> 1.2.6'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -56,15 +56,3 @@ group :production do
   gem 'rails_12factor'
   gem 'pg'
 end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
