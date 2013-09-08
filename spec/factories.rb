@@ -12,4 +12,14 @@ FactoryGirl.define do
     sequence(:test_port) { |n| 9000 + n }
     adapter 'shell'
   end
+
+  factory :git_sync do
+    repo 'git://github.com/foo/bar.git'
+    user_name 'Foo Bar'
+    user_email 'foo.bar@example.com'
+    factory :git_sync_scripts do
+      target 'scripts'
+    end
+  end
+
 end

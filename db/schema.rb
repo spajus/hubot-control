@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130721071925) do
+ActiveRecord::Schema.define(version: 20130824153339) do
+
+  create_table "git_syncs", force: true do |t|
+    t.string   "target",     limit: 20
+    t.integer  "target_id"
+    t.string   "repo"
+    t.string   "branch"
+    t.string   "user_name"
+    t.string   "user_email"
+    t.string   "user"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "git_syncs", ["target", "target_id"], name: "index_git_syncs_on_target_and_target_id"
 
   create_table "hubots", force: true do |t|
     t.string   "name"

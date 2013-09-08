@@ -1,0 +1,35 @@
+<table class="table table-striped table-bordered table-hover">
+  <tr>
+    <td width="15%">
+      <%= label_tag "Repo" %>
+    </td>
+    <td width="50%">
+      <%= text_field_tag :repo, @git_sync.repo, placeholder: 'git@github.com:foobar/hubot-scripts.git', class: 'input-block-level' %>
+    </td>
+    <td>
+      Git Repository URI
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label_tag "User Name" %>
+    </td>
+    <td>
+      <%= text_field_tag :user_name, @git_sync.user_name, placeholder: 'Your Name', class: 'input-block-level' %>
+    </td>
+    <td>
+       git config user.name
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= label_tag "User Email" %>
+    </td>
+    <td>
+      <%= text_field_tag :user_email, @git_sync.user_email, placeholder: current_user.email, class: 'input-block-level' %>
+    </td>
+    <td>
+       git config user.email
+    </td>
+  </tr>
+</table>
