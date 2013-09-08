@@ -21,7 +21,7 @@ gem 'gon', '~> 4.1'
 gem 'codemirror-rails', '~> 3.16'
 gem 'less-rails-fontawesome', '~> 0.4'
 gem 'unicorn'
-gem "devise", "~> 3.0.3"
+gem "devise", "~> 3.1.0"
 
 
 # Use jquery as the JavaScript library
