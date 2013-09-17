@@ -4,7 +4,11 @@ describe ScriptsController do
 
   let(:user) { create :user }
   let(:git) { double(:git) }
-  before { sign_in :user, user }
+
+  before do
+    sign_in :user, user
+    FileUtils.mkdir_p(Rails.root.join('scripts'))
+  end
 
   describe 'GET #index' do
     subject { get :index }
