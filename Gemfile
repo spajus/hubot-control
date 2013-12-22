@@ -27,9 +27,6 @@ gem 'git', '~> 1.2.6'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.5'
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
