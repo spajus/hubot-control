@@ -55,6 +55,22 @@ describe GitSync do
       end
 
       specify { subject }
+
+      context 'scripts moved back after git error' do
+        before do
+          Git.stub(:clone).and_raise('no permissions')
+          expect(Shell).to receive(:system).exactly(4).times
+        end
+
+        specify do
+          begin
+            subject
+            fail 'should have raised "no permissions"'
+          rescue
+            # expected
+          end
+        end
+      end
     end
   end
 

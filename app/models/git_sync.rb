@@ -15,9 +15,12 @@ class GitSync < ActiveRecord::Base
       temp = File.join(Dir.tmpdir, 'script_migrate')
       FileUtils.mkdir_p(temp)
       Shell.system "mv -f #{repo_dir}/* #{temp}"
-      Git.clone(repo, repo_name, path: repo_parent_dir)
-      Shell.system "mv -f #{temp}/* #{repo_dir}"
-      Shell.system "rm -rf #{temp}"
+      begin
+        Git.clone(repo, repo_name, path: repo_parent_dir)
+      ensure
+        Shell.system "mv -f #{temp}/* #{repo_dir}"
+        Shell.system "rm -rf #{temp}"
+      end
     end
   end
 
