@@ -32,7 +32,7 @@ class Shell
   end
 
   def self.prepare(command, env=nil, cwd=nil)
-    command = "#{env.collect { |k,v| "#{k}=#{v}" }.join(' ')} #{command}" if env
+    command = "#{env.collect { |k,v| "#{k}=#{Shellwords.escape(v)}" }.join(' ')} #{command}" if env
     command = "cd #{cwd} && #{command}" if cwd
     command
   end
