@@ -16,6 +16,10 @@ Control self-hosted Hubot like a boss!
 - Owner of rails app process must have write permissions to `#{Rails.root}/hubots` and `#{Rails.root}/scripts`, or just `#{Rails.root}`
 - Use `admin@hubot-control.org` / `hubot` to log in
 
+## Tutorials
+
+[How to get Hubot on HipChat using Hubot Control on CentOS Linux](http://varaneckas.com/blog/hubot-hipchat-centos/)
+
 ## Running on Heroku
 
 ```
