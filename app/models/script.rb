@@ -56,10 +56,13 @@ END
 module.exports = (robot) ->
 
   robot.respond /jump/i, (msg) ->
-    msg.send "jumping!"
+    msg.emote "jumping!"
 
   robot.hear /your'e/i, (msg) ->
     msg.send "you're"
+
+  robot.hear /what year is it\?/i, (msg) ->
+    msg.reply new Date().getFullYear()
 
   robot.router.get "/foo", (req, res) ->
     res.end "bar"
@@ -88,11 +91,15 @@ END
 module.exports = function(robot) {
 
   robot.respond(/jump/i, function(msg) {
-    msg.send("jumping!");
+    msg.emote("jumping!");
   });
 
   robot.hear(/your'e/i, function(msg) {
     msg.send("you're");
+  });
+
+  robot.hear(/what year is it\?/i, function(msg) {
+    msg.reply(new Date().getFullYear());
   });
 
   robot.router.get("/foo", function(req, res) {
