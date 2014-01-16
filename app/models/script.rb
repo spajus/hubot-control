@@ -47,6 +47,9 @@ END
 #   hubot <trigger> - <what the respond trigger does>
 #   <trigger> - <what the hear trigger does>
 #
+# URLS:
+#   GET /path?param=<val> - <what the request does>
+#
 # Notes:
 #   <optional notes required for the script>
 #
