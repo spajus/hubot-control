@@ -82,8 +82,3 @@ Heroku demo: http://hubot-control-demo.herokuapp.com/ (usually broken due to per
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
-## Say thanks
-
-[![Flattr this](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/1581772/spajushubot-control-on-GitHub)
-
