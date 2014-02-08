@@ -8,7 +8,8 @@ updateLog = ->
     success: (data) ->
       if data
         log.val(data)
-        log.scrollTop(log[0].scrollHeight - log.height())
+        if $('#auto_scroll').is(':checked')
+          log.scrollTop(log[0].scrollHeight - log.height())
     complete: ->
       if /\/log$/.test location.href
         update_timeout = setTimeout(updateLog, 5000)

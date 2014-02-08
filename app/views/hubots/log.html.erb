@@ -4,7 +4,16 @@
 <%= text_area_tag :log, @log, id: 'log', disabled: 'disabled', class: 'input-block-level hubot-log-full' %>
 
 <%= link_to "truncate", log_truncate_hubot_path(@hubot), class: 'btn btn-danger', method: 'post' %>
-<%= link_to "Back", @hubot, class: 'btn pull-right' %>
+<div class="pull-right">
+  <div>
+    <label class="checkbox pull-right">
+      <%= check_box_tag 'auto_scroll', 1, true, id: 'auto_scroll' %> Auto scroll
+    </label>
+  </div>
+  <div>
+    <%= link_to "Back", @hubot, class: 'btn pull-right' %>
+  </div>
+</div>
 
 <%= content_for :scripts do %>
   <%= javascript_include_tag :hubot_log %>
