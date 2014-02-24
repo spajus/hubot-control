@@ -20,9 +20,9 @@ Control self-hosted Hubot like a boss!
 
 [How to get Hubot on HipChat using Hubot Control on CentOS Linux](http://varaneckas.com/blog/hubot-hipchat-centos/)
 
-## Upcoming Book
+## Book: Automation and Monitoring with Hubot
 
-There is a book about Hubot in progress: [Automation and Monitoring with Hubot](https://leanpub.com/automation-and-monitoring-with-hubot). It will cover the use of Hubot Control among many other topics.
+[Automation and Monitoring with Hubot](https://leanpub.com/automation-and-monitoring-with-hubot) is already available at Leanpub.
 
 ## Running on Heroku
 
