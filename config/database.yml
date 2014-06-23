@@ -17,3 +17,13 @@ test:
   database: db/test.sqlite3
   pool: 5
   timeout: 5000
+
+production:
+  adapter: <%= ENV["RAILS_DB_ADAPTER"] || "postgresql" %>
+  encoding: <%= ENV["RAILS_DB_ENCODING"] || "unicode" %>
+  database: <%= ENV["RAILS_DB_DATABASE"] || "hubot_control" %>
+  pool: <%= ENV["RAILS_DB_POOL"] || "5" %>
+  username: <%= ENV["RAILS_DB_USERNAME"] %>
+  password: <%= ENV["RAILS_DB_PASSWORD"] %>
+  host: <%= ENV["RAILS_DB_HOST"] || ENV["DB_PORT_5432_TCP_ADDR"] %>
+  port: <%= ENV["RAILS_DB_PORT"] || ENV["$DB_PORT_5432_TCP_PORT"] %>
