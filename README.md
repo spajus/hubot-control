@@ -22,7 +22,7 @@ Control self-hosted Hubot like a boss!
 
 ## Book: Automation and Monitoring with Hubot
 
-[Automation and Monitoring with Hubot](https://leanpub.com/automation-and-monitoring-with-hubot) is already available at Leanpub.
+[Automation and Monitoring with Hubot](https://leanpub.com/automation-and-monitoring-with-hubot) is available at Leanpub.
 
 ## Running on Heroku
 
