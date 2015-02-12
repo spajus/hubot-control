@@ -5,6 +5,7 @@ FROM ruby:2.0.0-onbuild
 # Install nodejs and npm
 RUN curl -sL https://deb.nodesource.com/setup | bash -
 RUN apt-get update && apt-get install -y nodejs
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install hubot
 RUN npm install -g coffee-script hubot
