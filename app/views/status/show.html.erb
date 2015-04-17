@@ -26,6 +26,11 @@
     <td><%= feedback(@hubot, 'Installed', 'Not Installed') %></td>
   </tr>
   <tr>
+    <td>Yo</td>
+    <td><%= @yo || 'Run <code>npm install -g yo generator-hubot</code> after Hubot, Node, NPM and CoffeeScript are installed'.html_safe %></td>
+    <td><%= feedback(@yo, 'Installed', 'Not Installed') %></td>
+  </tr>
+  <tr>
     <td>System user</td>
     <td><%= @sys_user %></td>
     <td><%= feedback(@not_root, 'OK', "Running hubot-control as root user") %></td>

@@ -18,6 +18,10 @@ class Status
       @@hubot ||= Shell.run('hubot -v').try(:strip)
     end
 
+    def yo
+      @@yo ||= Shell.run('yo --version').try(:strip)
+    end
+
     def hubot_dir_writable?
       begin
         FileUtils.mkdir_p(Hubot.base_dir)
