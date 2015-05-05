@@ -47,7 +47,7 @@ Prerequisites:
 
 Start a Postgres instance
 
-    docker run --name hubot-control-db -d -e USER="docker" -e DB="hubot_control" -e PASS="docker" paintedfox/postgresql
+    docker run --name hubot-control-db -d -e DB_USER="docker" -e DB="hubot_control" -e PASS="docker" hackedu/postgresql
 
 Create a data-only container to store Hubots
 
