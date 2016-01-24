@@ -10,7 +10,7 @@ Control self-hosted Hubot like a boss!
 
 ## Help Wanted!
 
-This project is not being actively maintained. If you are interested and willing to help with maintenance, please responde here: https://github.com/spajus/hubot-control/issues/16
+This project is not being actively maintained. If you are interested and willing to help with maintenance, please respond here: https://github.com/spajus/hubot-control/issues/16
 
 ## Installation
 
