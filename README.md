@@ -8,6 +8,10 @@ Control self-hosted Hubot like a boss!
 [![Code Climate](https://codeclimate.com/github/spajus/hubot-control.png?branch=master)](https://codeclimate.com/github/spajus/hubot-control)
 [![Dependency Status](https://gemnasium.com/spajus/hubot-control.png?branch=master)](https://gemnasium.com/spajus/hubot-control)
 
+## Help Wanted!
+
+This project is not being actively maintained. If you are interested and willing to help with maintenance, please responde here: https://github.com/spajus/hubot-control/issues/16
+
 ## Installation
 
 - Run DB migrations with `rake db:migrate`
