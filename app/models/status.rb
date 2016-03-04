@@ -44,10 +44,6 @@ class Status
       @@sys_user ||= Shell.run('whoami').try(:strip)
     end
 
-    def not_root?
-      self.sys_user != 'root'
-    end
-
     def can_run?
       self.node \
         && self.npm \

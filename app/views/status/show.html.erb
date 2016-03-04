@@ -31,11 +31,6 @@
     <td><%= feedback(@yo, 'Installed', 'Not Installed') %></td>
   </tr>
   <tr>
-    <td>System user</td>
-    <td><%= @sys_user %></td>
-    <td><%= feedback(@not_root, 'OK', "Running hubot-control as root user") %></td>
-  </tr>
-  <tr>
     <td>Hubots location</td>
     <td><%= @hubots_dir %></td>
     <td><%= feedback(@hubots_dir_perms, 'Writable', 'Not writable') %></td>
