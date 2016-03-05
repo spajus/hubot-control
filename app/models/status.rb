@@ -49,8 +49,7 @@ class Status
         && self.npm \
         && self.coffee \
         && self.hubot \
-        && self.hubot_dir_writable? \
-        && self.not_root?
+        && self.hubot_dir_writable?
     end
 
   end
