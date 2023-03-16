@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.1'
 
 gem 'therubyracer', '~> 0.12'
 gem 'less-rails', '~> 2.3'
-gem 'twitter-bootstrap-rails', '~> 2.2'
+gem 'twitter-bootstrap-rails', '~> 3.2'
 gem 'gon', '~> 5.0.1'
 gem 'codemirror-rails', '~> 3.16'
 gem 'less-rails-fontawesome', '~> 0.4'
